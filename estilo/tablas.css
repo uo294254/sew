@@ -1,0 +1,6 @@
+ /* Mario Trelles Riestra - UO294254 */
+ /* Estilos generales del proyecto MotoGP-Desktop*/
+
+
+table { border-spacing: 10px; width: 40em; }
+th, td { border: 1px solid black; padding: 8px; text-align: center; }
