@@ -9,36 +9,35 @@ Mint Blue     Blue Gray        Dark Blue       Yellow
 body {
     font-family: Verdana, Tahoma, sans-serif;
     background-color: #88b2cc; 
-    color: #0c2d48; /* El color del texto (#0c2d48) se hereda a párrafos, listas, tablas y demás elementos hijos */
+    color: #0c2d48;
 }
 
 /* header → Especificidad = 001 */
 header {
-    background-color: #658ea9;
-    color: #fad02c; /* El color del texto (#fad02c) se hereda a los hijos directos h1 y nav a */
+    background-color: #97b9cf;
+    color: #0c2d48;
 }
 
 /* h1 → Especificidad = 001 */
 h1 {
-    color: #fad02c; /* El color del header (#fad02c) se hereda asegurando contraste sobre el fondo del header */
+    color: #0c2d48; 
+    /* Hereda background-color de header */
 }
 
-/* h1 a → Especificidad = 002 */
-h1 a {
-    color: #fad02c; /* Enlace dentro del h1, hereda color del h1, sin subrayado */
+/* header a → Especificidad = 002 */
+header a {
+    color: #0c2d48;
+    /* Hereda background-color de header */
 }
 
-/* h1 a:hover → Especificidad = 012 */
-h1 a:hover {
-    color: #0c2d48; /* Al pasar el ratón, cambia el color a Dark Blue (#0c2d48) para indicar interacción */
+/* header a:hover → Especificidad = 012 */
+header a:hover {
+    color: #fad02c;
+    /* Hereda background-color de header */
 }
 
-/* nav a → Especificidad = 002 */
-nav a { 
-    color: #fad02c; /* Enlaces dentro del nav, heredan el color del header (#fad02c) */
-}
-
-/* nav a:hover → Especificidad = 012 */
-nav a:hover {
-    color: #0c2d48; /* Hover sobre enlaces del nav, cambia a Dark Blue (#0c2d48) para indicar interacción */
+/* .active → Especificidad: 010 */
+.active {
+    color: #fad02c;
+    /* Hereda background-color de header */
 }
