@@ -1,0 +1,80 @@
+ /* Mario Trelles Riestra - UO294254 */
+ /* Estilos de layout del proyecto MotoGP-Desktop */
+
+ /* header → Especificidad = 001 */
+header {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+}
+
+ /* header nav → Especificidad = 002 */
+header nav {
+	display: flex;
+	flex-direction: row;
+    align-items: center;
+	gap: 0.5rem;
+}
+
+/* header nav a → Especificidad = 003 */
+header nav a {
+	display: inline-block;
+	padding: 0.8em 0.8em;
+	border-radius: 0.3em;
+}
+
+@media (min-width: 320px) and (max-width: 799px) {
+
+    /* header → Especificidad = 001 */
+	header {
+		flex-direction: column; 
+		align-items: stretch;         
+         /* Redefinición: flex-direction y align-items */
+	}
+    
+    /* header nav → Especificidad = 002 */
+	header nav {
+		flex-direction: column; 
+		align-items: stretch; 
+        /* Redefinición: flex-direction y align-items */
+	}
+    
+    /* header nav a → Especificidad = 003 */
+	header nav a {
+        text-align: left;
+		width: 100%;
+        /* Redefinición: text-align y width */
+	}
+	
+    /* body > p:nth-of-type(1) → Especificidad: 012 */
+	body > p:nth-of-type(1) {
+		display: none;
+	}
+	
+    /* video → Especificidad: 001 */
+	video {
+        width:100%;
+        height:auto;
+    }
+
+    /* audio → Especificidad: 001 */
+    audio {
+        width:100%;
+    }
+    
+    /* table → Especificidad: 001 */
+    table {
+        font-size: 0.6rem;
+        /* Redefinición: font-size */
+    }
+
+    /* th, td → Especificidad: 001 */
+    th, td {
+        padding: 0.2em 0.3em;
+        /* Redefinición: padding */
+    }
+}
+
+
