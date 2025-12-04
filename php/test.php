@@ -6,7 +6,6 @@ $mysqli = new mysqli("localhost", "DBUSER2025", "DBPSWD2025", "UO294254_DB");
 if ($mysqli->connect_error) die("Error de conexión: " . $mysqli->connect_error);
 
 $errorFormulario = false;
-$errorFormulario = false;
 $errores = [];
 for ($i = 1; $i <= 10; $i++) {
     $errores["pregunta$i"] = "";
@@ -15,6 +14,9 @@ $errores["profesion"] = "";
 $errores["edad"] = "";
 $errores["genero"] = "";
 $errores["pericia"] = "";
+$errores["comentarios"] = "";
+$errores["mejoras"] = "";
+$errores["valoracion"] = "";
 
 $mostrarFormularioObservador = false;
 
@@ -62,6 +64,11 @@ if (isset($_POST['accion'])) {
                 }
             }
 
+            if (empty($_POST["valoracion"]) || !is_numeric($_POST["valoracion"]) || $_POST["valoracion"] < 0 || $_POST["valoracion"] > 10) {
+                $errorFormulario = true;
+                $errores["valoracion"] = " * Debe ser un número del 0 al 10";
+            }
+
             if (!$errorFormulario) {
                 $cronometro->parar();
                 $tiempo_formato = $cronometro->mostrar();
@@ -71,6 +78,9 @@ if (isset($_POST['accion'])) {
                 $genero = $_POST["genero"];
                 $pericia = (int)$_POST["pericia"];
                 $dispositivo = $_POST["dispositivo"];
+                $comentarios = $_POST["comentarios"] ?? '';
+                $mejoras = $_POST["mejoras"] ?? '';
+                $valoracion = (int)$_POST["valoracion"];
 
                 $stmt_prof = $mysqli->prepare("INSERT INTO profesiones (profesion) VALUES (?)");
                 $stmt_prof->bind_param("s", $profesion);
@@ -114,8 +124,8 @@ if (isset($_POST['accion'])) {
                 $stmt_user->execute();
                 $id_usuario = $stmt_user->insert_id;
 
-                $stmt = $mysqli->prepare("INSERT INTO tests (id_usuario, id_dispositivo, tiempo, completado, comentarios, mejoras, valoracion) VALUES (?, ?, ?, 1, '', '', 0)");
-                $stmt->bind_param("iis", $id_usuario, $id_dispositivo, $tiempo_formato);
+                $stmt = $mysqli->prepare("INSERT INTO tests (id_usuario, id_dispositivo, tiempo, completado, comentarios, mejoras, valoracion) VALUES (?, ?, ?, 1, ?, ?, ?)");
+                $stmt->bind_param("iisssi", $id_usuario, $id_dispositivo, $tiempo_formato, $comentarios, $mejoras, $valoracion);
                 $stmt->execute();
                 $id_test = $stmt->insert_id;
 
@@ -294,6 +304,26 @@ if (!$mostrarFormularioObservador) {
             <input type='radio' name='pregunta10' value='Red Bull' />Red Bull
             <input type='radio' name='pregunta10' value='Monster Energy' />Monster Energy
             <span style='color:red'>" . $errores["pregunta10"] . "</span>
+        </p>
+
+        <h2>Evaluación de la aplicación</h2>
+
+        <p>Comentarios sobre la aplicación (opcional):</p>
+        <p>
+            <textarea name='comentarios' rows='4' cols='50' placeholder='¿Qué te ha parecido la aplicación?'>" . ($_POST['comentarios'] ?? '') . "</textarea>
+            <span style='color:red'>" . $errores["comentarios"] . "</span>
+        </p>
+
+        <p>Propuestas de mejora (opcional):</p>
+        <p>
+            <textarea name='mejoras' rows='4' cols='50' placeholder='¿Qué mejorarías de la aplicación?'>" . ($_POST['mejoras'] ?? '') . "</textarea>
+            <span style='color:red'>" . $errores["mejoras"] . "</span>
+        </p>
+
+        <p>Valoración de la aplicación (0-10):</p>
+        <p>
+            <input type='number' name='valoracion' min='0' max='10' value='" . ($_POST['valoracion'] ?? '') . "'/>
+            <span style='color:red'>" . $errores["valoracion"] . "</span>
         </p>
 
         <p>
