@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='utf-8'?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <Placemark>
+      <name>Punto Origen</name>
+      <description>Origen del circuito</description>
+      <Point>
+        <coordinates>-6.0322,36.7094,39.08</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo1</name>
+      <description>Distancia de tramo: 350m</description>
+      <Point>
+        <coordinates>-6.0336,36.7125,45.77</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo2</name>
+      <description>Distancia de tramo: 250m</description>
+      <Point>
+        <coordinates>-6.0311,36.7125,48.7</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo3</name>
+      <description>Distancia de tramo: 100m</description>
+      <Point>
+        <coordinates>-6.0319,36.7117,44.72</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo4</name>
+      <description>Distancia de tramo: 250m</description>
+      <Point>
+        <coordinates>-6.0317,36.7097,40.31</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo5</name>
+      <description>Distancia de tramo: 750m</description>
+      <Point>
+        <coordinates>-6.0272,36.7084,50.91</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo6</name>
+      <description>Distancia de tramo: 250m</description>
+      <Point>
+        <coordinates>-6.0331,36.7042,45.8</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo7</name>
+      <description>Distancia de tramo: 300m</description>
+      <Point>
+        <coordinates>-6.0322,36.7064,40.11</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo8</name>
+      <description>Distancia de tramo: 350m</description>
+      <Point>
+        <coordinates>-6.0344,36.7082,35.96</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo9</name>
+      <description>Distancia de tramo: 150m</description>
+      <Point>
+        <coordinates>-6.0364,36.7059,39.25</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo10</name>
+      <description>Distancia de tramo: 350m</description>
+      <Point>
+        <coordinates>-6.0378,36.7067,38.84</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo11</name>
+      <description>Distancia de tramo: 200m</description>
+      <Point>
+        <coordinates>-6.0361,36.7092,33.94</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo12</name>
+      <description>Distancia de tramo: 350m</description>
+      <Point>
+        <coordinates>-6.0344,36.7091,36.26</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo13</name>
+      <description>Distancia de tramo: 300m</description>
+      <Point>
+        <coordinates>-6.0314,36.7069,40.66</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <name>Circuito Completo</name>
+    <Placemark>
+      <LineString>
+        <extrude>1</extrude>
+        <tessellation>1</tessellation>
+        <coordinates>-6.0322,36.7094,39.08
+-6.0336,36.7125,45.77
+-6.0311,36.7125,48.7
+-6.0319,36.7117,44.72
+-6.0317,36.7097,40.31
+-6.0272,36.7084,50.91
+-6.0331,36.7042,45.8
+-6.0322,36.7064,40.11
+-6.0344,36.7082,35.96
+-6.0364,36.7059,39.25
+-6.0378,36.7067,38.84
+-6.0361,36.7092,33.94
+-6.0344,36.7091,36.26
+-6.0314,36.7069,40.66
+-6.0322,36.7094,39.08</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </LineString>
+      <Style>
+        <LineStyle>
+          <color>#ff0000ff</color>
+          <width>5</width>
+        </LineStyle>
+      </Style>
+    </Placemark>
+  </Document>
+</kml>

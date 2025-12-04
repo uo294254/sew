@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<circuito xmlns="http://www.uniovi.es" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:schemaLocation="http://www.uniovi.es circuito.xsd">
+
+    <nombre>Circuito de Jerez – Ángel Nieto</nombre>
+    <longitud unidades = "metros">4423</longitud>
+    <anchura unidades = "metros">11</anchura>
+    <fecha>2025-04-27</fecha>
+    <hora>14:00:00</hora>
+    <vueltas>25</vueltas>
+    <localidad>Jerez de la frontera</localidad>
+    <pais>España</pais>
+    <patrocinador>Estrella Galicia</patrocinador>
+
+    <referencias>
+        <referencia>https://es.wikipedia.org/wiki/Circuito_de_Jerez</referencia>
+        <referencia>https://www.motogp.com/es/circuitos/jerez</referencia>
+        <referencia>https://www.formula1.com</referencia>
+    </referencias>
+
+    <fotos>
+        <foto archivo="../multimedia/Panorama.jpg">Vista aérea del circuito</foto>
+        <foto archivo="../multimedia/RectaMeta.jpg">Recta de meta</foto>
+        <foto archivo="../multimedia/CurvaNieto.jpg">Curva Ángel Nieto</foto>
+    </fotos>
+
+    <videos>
+        <video archivo="../multimedia/VueltaRapida.mp4">Vuelta rápida a bordo</video>
+        <video archivo="../multimedia/PrimeraVic.mp4">Primera victoria de Álex Márquez</video>
+    </videos>
+
+    <punto_origen>
+        <longitud_geo>-6.0322</longitud_geo>
+        <latitud_geo>36.7094</latitud_geo>
+        <altitud_geo>39.08</altitud_geo>
+    </punto_origen>
+
+    <tramos>
+        <tramo>
+            <distancia unidades="metros">350</distancia>
+            <longitud_geo>-6.0336</longitud_geo>
+            <latitud_geo>36.7125</latitud_geo>
+            <altitud_geo>45.77</altitud_geo>
+            <sector>1</sector>
+        </tramo>
+        <tramo>
+            <distancia unidades="metros">250</distancia>
+            <longitud_geo>-6.0311</longitud_geo>
+            <latitud_geo>36.7125</latitud_geo>
+            <altitud_geo>48.70</altitud_geo>
+            <sector>1</sector>
+        </tramo>
+        <tramo>
+            <distancia unidades="metros">100</distancia>
+            <longitud_geo>-6.0319</longitud_geo>
+            <latitud_geo>36.7117</latitud_geo>
+            <altitud_geo>44.72</altitud_geo>
+            <sector>2</sector>
+        </tramo>
+        <tramo>
+            <distancia unidades="metros">250</distancia>
+            <longitud_geo>-6.0317</longitud_geo>
+            <latitud_geo>36.7097</latitud_geo>
+            <altitud_geo>40.31</altitud_geo>
+            <sector>2</sector>
+        </tramo>
+        <tramo>
+            <distancia unidades="metros">750</distancia>
+            <longitud_geo>-6.0272</longitud_geo>
+            <latitud_geo>36.7084</latitud_geo>
+            <altitud_geo>50.91</altitud_geo>
+            <sector>2</sector>
+        </tramo>
+        <tramo>
+            <distancia unidades="metros">250</distancia>
+            <longitud_geo>-6.0331</longitud_geo>
+            <latitud_geo>36.7042</latitud_geo>
+            <altitud_geo>45.80</altitud_geo>
+            <sector>2</sector>
+        </tramo>
+        <tramo>
+            <distancia unidades="metros">300</distancia>
+            <longitud_geo>-6.0322</longitud_geo>
+            <latitud_geo>36.7064</latitud_geo>
+            <altitud_geo>40.11</altitud_geo>
+            <sector>3</sector>
+        </tramo>
+        <tramo>
+            <distancia unidades="metros">350</distancia>
+            <longitud_geo>-6.0344</longitud_geo>
+            <latitud_geo>36.7082</latitud_geo>
+            <altitud_geo>35.96</altitud_geo>
+            <sector>3</sector>
+        </tramo>
+        <tramo>
+            <distancia unidades="metros">150</distancia>
+            <longitud_geo>-6.0364</longitud_geo>
+            <latitud_geo>36.7059</latitud_geo>
+            <altitud_geo>39.25</altitud_geo>
+            <sector>3</sector>
+        </tramo>
+        <tramo>
+            <distancia unidades="metros">350</distancia>
+            <longitud_geo>-6.0378</longitud_geo>
+            <latitud_geo>36.7067</latitud_geo>
+            <altitud_geo>38.84</altitud_geo>
+            <sector>3</sector>
+        </tramo>
+        <tramo>
+            <distancia unidades="metros">200</distancia>
+            <longitud_geo>-6.0361</longitud_geo>
+            <latitud_geo>36.7092</latitud_geo>
+            <altitud_geo>33.94</altitud_geo>
+            <sector>4</sector>
+        </tramo>
+        <tramo>
+            <distancia unidades="metros">350</distancia>
+            <longitud_geo>-6.0344</longitud_geo>
+            <latitud_geo>36.7091</latitud_geo>
+            <altitud_geo>36.26</altitud_geo>
+            <sector>4</sector>
+        </tramo>
+        <tramo>
+            <distancia unidades="metros">300</distancia>
+            <longitud_geo>-6.0314</longitud_geo>
+            <latitud_geo>36.7069</latitud_geo>
+            <altitud_geo>40.66</altitud_geo>
+            <sector>4</sector>
+        </tramo>
+    </tramos>
+
+    <resultado>
+        <vencedor>Marc Márquez</vencedor>
+        <tiempo>PT41M23.678S</tiempo>
+    </resultado>
+        
+
+    <clasificacion>
+        <piloto1>Marc Márquez</piloto1>
+        <piloto2>Pecco Bagnaia</piloto2>
+        <piloto3>Jorge Martín</piloto3>
+    </clasificacion>
+
+</circuito>
