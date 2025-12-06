@@ -49,6 +49,14 @@ class Ciudad {
         return pCoordenadas;
     }
 
+    formatearHora(isoString) {
+        const fecha = new Date(isoString);
+        return fecha.toLocaleTimeString("es-ES", {
+            hour: "2-digit",
+            minute: "2-digit"
+        });
+    }
+
     getMeteorologiaCarrera() {
         const lat = 36.681;
         const lon = -6.138;
@@ -71,8 +79,6 @@ class Ciudad {
         });
     }
 
-
-
     procesarJSONCarrera(datos) {
         if (!datos?.hourly) {
             $("main").append("<p>No hay datos de carrera.</p>");
@@ -91,37 +97,36 @@ class Ciudad {
         const vientoDir = datos.hourly.winddirection_10m;
 
         const $articulo = $("<article></article>");
-        $articulo.append("<h3>Datos meteorológicos del día de la carrera</h3>");
-        $articulo.append(`<p>Salida del sol: ${salidaSol}</p>`);
-        $articulo.append(`<p>Puesta del sol: ${puestaSol}</p>`);
-
-        const $tabla = $("<table></table>");
-        $tabla.append("<tr><th>Hora</th><th>Temp (°C)</th><th>Sensación</th><th>Lluvia (mm)</th><th>Humedad (%)</th><th>Viento (km/h)</th><th>Dirección (°)</th></tr>");
+        $articulo.append("<h3>Datos meteorológicos del día de la carrera (27-04-2025)</h3>");
+        $articulo.append(`<p>Salida del sol: ${this.formatearHora(salidaSol)}</p>`);
+        $articulo.append(`<p>Puesta del sol: ${this.formatearHora(puestaSol)}</p>`);
 
         for (let i = 0; i < horas.length; i++) {
             if (horas[i].endsWith("14:00") || horas[i].endsWith("15:00")) {
-                $tabla.append(`
-                    <tr>
-                        <td>${horas[i]}</td>
-                        <td>${temperatura[i]}</td>
-                        <td>${sensacion[i]}</td>
-                        <td>${lluvia[i]}</td>
-                        <td>${humedad[i]}</td>
-                        <td>${vientoVel[i]}</td>
-                        <td>${vientoDir[i]}</td>
-                    </tr>
-                `);
+                const $lista = $("<ul></ul>");
+                $lista.append(`<li>Hora: ${this.formatearHora(horas[i])}</li>`);
+                $lista.append(`<li>Temperatura: ${temperatura[i]}°C</li>`);
+                $lista.append(`<li>Sensación térmica: ${sensacion[i]}°C</li>`);
+                $lista.append(`<li>Lluvia: ${lluvia[i]} mm</li>`);
+                $lista.append(`<li>Humedad: ${humedad[i]}%</li>`);
+                $lista.append(`<li>Velocidad del viento: ${vientoVel[i]} km/h</li>`);
+                $lista.append(`<li>Dirección del viento: ${vientoDir[i]}°</li>`);
+                
+                $articulo.append($lista);
             }
         }
 
-        $articulo.append($tabla);
         $("main section").append($articulo);
     }
 
     getMeteorologiaEntrenos() {
         const lat = 36.681;
         const lon = -6.138;
-        const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,precipitation,windspeed_10m,relative_humidity_2m&timezone=Europe%2FMadrid&past_days=3`;
+        
+        const start_date = "2025-04-24";
+        const end_date = "2025-04-26";
+        
+        const url = `https://archive-api.open-meteo.com/v1/archive?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,precipitation,windspeed_10m,relative_humidity_2m&timezone=Europe%2FMadrid&start_date=${start_date}&end_date=${end_date}`;
 
         $.ajax({
             dataType: "json",
@@ -137,36 +142,67 @@ class Ciudad {
     }
 
     procesarJSONEntrenos(datos) {
-        const totalHoras = datos.hourly.time.length;
-        const horas = datos.hourly.time.slice(totalHoras - 6);
-        const temperatura = datos.hourly.temperature_2m.slice(totalHoras - 6);
-        const lluvia = datos.hourly.precipitation.slice(totalHoras - 6);
-        const viento = datos.hourly.windspeed_10m.slice(totalHoras - 6);
-        const humedad = datos.hourly.relative_humidity_2m.slice(totalHoras - 6);
+        if (!datos?.hourly) {
+            $("main").append("<p>No hay datos de entrenamientos.</p>");
+            return;
+        }
 
+        const horas = datos.hourly.time;
+        const temperatura = datos.hourly.temperature_2m;
+        const lluvia = datos.hourly.precipitation;
+        const viento = datos.hourly.windspeed_10m;
+        const humedad = datos.hourly.relative_humidity_2m;
+
+        const datosPorDia = {};
+
+        for (let i = 0; i < horas.length; i++) {
+            const fecha = horas[i].split('T')[0];
+            
+            if (!datosPorDia[fecha]) {
+                datosPorDia[fecha] = {
+                    temperatura: [],
+                    lluvia: [],
+                    viento: [],
+                    humedad: []
+                };
+            }
+
+            datosPorDia[fecha].temperatura.push(temperatura[i]);
+            datosPorDia[fecha].lluvia.push(lluvia[i]);
+            datosPorDia[fecha].viento.push(viento[i]);
+            datosPorDia[fecha].humedad.push(humedad[i]);
+        }
 
         const $articulo = $("<article></article>");
         $articulo.append("<h3>Datos meteorológicos de los entrenamientos</h3>");
 
-        const $tabla = $("<table></table>");
-        $tabla.append("<tr><th>Hora</th><th>Temp (°C)</th><th>Lluvia (mm)</th><th>Viento (km/h)</th><th>Humedad (%)</th></tr>");
+        for (const fecha in datosPorDia) {
+            const datos = datosPorDia[fecha];
 
-        for (let i = 0; i < horas.length; i++) {
-            $tabla.append(`
-                <tr>
-                    <td>${horas[i]}</td>
-                    <td>${temperatura[i]}</td>
-                    <td>${lluvia[i]}</td>
-                    <td>${viento[i]}</td>
-                    <td>${humedad[i]}</td>
-                </tr>
-            `);
+            const tempMedia = (datos.temperatura.reduce((a, b) => a + b, 0) / datos.temperatura.length).toFixed(2);
+            const lluviaMedia = (datos.lluvia.reduce((a, b) => a + b, 0) / datos.lluvia.length).toFixed(2);
+            const vientoMedia = (datos.viento.reduce((a, b) => a + b, 0) / datos.viento.length).toFixed(2);
+            const humedadMedia = (datos.humedad.reduce((a, b) => a + b, 0) / datos.humedad.length).toFixed(2);
+
+            const fechaObj = new Date(fecha + 'T12:00:00');
+            const fechaFormateada = fechaObj.toLocaleDateString("es-ES", {
+                day: "2-digit",
+                month: "2-digit",
+                year: "numeric"
+            });
+
+            const $lista = $("<ul></ul>");
+            $lista.append(`<li>Fecha: ${fechaFormateada}</li>`);
+            $lista.append(`<li>Temperatura media: ${tempMedia}°C</li>`);
+            $lista.append(`<li>Lluvia media: ${lluviaMedia} mm</li>`);
+            $lista.append(`<li>Velocidad del viento media: ${vientoMedia} km/h</li>`);
+            $lista.append(`<li>Humedad media: ${humedadMedia}%</li>`);
+            
+            $articulo.append($lista);
         }
 
-        $articulo.append($tabla);
         $("main section").append($articulo);
     }
-
 }
 
 const jerez = new Ciudad("Jerez de la Frontera", "España", "jerezano");

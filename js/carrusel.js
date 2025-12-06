@@ -32,13 +32,11 @@ class Carrusel {
             },
             method: 'GET',
             success: (datos) => {
-                $("pre").text(JSON.stringify(datos, null, 2));
                 this.procesarJSONFotografias(datos);
                 this.mostrarFotografias();
             },
             error: () => {
-                $("h3").html("¡Tenemos problemas! No puedo obtener JSON de <a href='https://www.flickr.com/'>Flickr</a>");
-                $("pre, p").remove();
+                $("article h2").html("¡Tenemos problemas! No puedo obtener JSON de <a href='https://www.flickr.com/'>Flickr</a>");
             }
         });
     }
@@ -57,36 +55,24 @@ class Carrusel {
     mostrarFotografias() {
         if (this.#fotos.length === 0) return;
 
-        const articulo = $(`<article></article>`);
-        const encabezado = $(`<h2>Imágenes del circuito de Circuito de Jerez – Angel Nieto </h2>`);
-        articulo.append(encabezado);
-
-        const contenedor = $("<p></p>");
-        articulo.append(contenedor);
-
-        $("main").append(articulo);
-
-        this.$contenedor = contenedor;
+        this.$contenedor = $("article h2");
 
         this.cambiarFotografia();
         setInterval(this.cambiarFotografia.bind(this), 3000);
     }
 
     cambiarFotografia() {
-        if (this.#actual < this.#maximo) {
+        const foto = this.#fotos[this.#actual];
+        
+        $("article h2 ~ img").remove();
+        
+        this.$contenedor.after(`<img src="${foto.url}" alt="${foto.titulo}" />`);
+
+        if (this.#actual < this.#maximo - 1) {
             this.#actual++;
         } else {
             this.#actual = 0;
         }
-
-        const foto = this.#fotos[this.#actual];
-        this.$contenedor.html(`<ul>
-                <li>
-                    <a href="${foto.enlace}" target="_blank">
-                        <img src="${foto.url}" alt="Foto MotoGP" width="200">
-                    </a>
-                </li>
-            </ul>`);
     }
 }
 
