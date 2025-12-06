@@ -1,86 +1,80 @@
  /* Mario Trelles Riestra - UO294254 */
  /* Estilos generales del proyecto MotoGP-Desktop */
 
-/* Paleta de colores:
-Mint Blue     Blue clean       Dark Blue       Yellow
-#88b2cc       #97b9cf          #0c2d48         #fad02c */
-
- /* body -> Especificidad = 001 */
+/* especificidad: 001 */
 body {
     font-family: Verdana, Tahoma, sans-serif;
-    background-color: #88b2cc; 
+    background-color: #9ABED5; 
     color: #0c2d48;
 }
 
-/* header -> Especificidad = 001 */
+/* especificidad: 001 */
 header {
-    background-color: #97b9cf;
+    background: linear-gradient(90deg, #0c2d48 5%,  #9ABED5 100%);
     color: #0c2d48;
 }
 
-/* h1 -> Especificidad = 001 */
-h1 {
-    color: #fad02c;
-    padding: 0.2em 0.2em;
-    background: linear-gradient(90deg, #0c2d48 25%,  #97b9cf 100%);
-    /* Hereda background-color de header */
-}
-
-
-/* body a -> Especificidad = 002 */
+/* especificidad: 002 */
 body a {
-    color: #0c2d48;
-    /* Hereda background-color de body */
+    color: #0c2d48; /* Hereda background-color de body */
 }
 
-/* nav a -> Especificidad = 002 */
+/* especificidad: 002 */
 nav a {
     text-decoration: none;
     background-color: #0c2d48;
-    color: #97b9cf;
+    color: #B6CFDD;
 }
 
-/* body a:hover -> Especificidad = 012 */
+/* especificidad: 002 */
+h1 a {
+    color: #fad02c; /* Hereda background de header */
+    text-decoration: none;
+}
+
+/* especificidad: 012 */
 body a:hover {
     color: #fad02c;
-    /* Hereda background-color de body */
+    background-color: #0b2337;
 }
 
-/* .active -> Especificidad: 010 */
+/* especificidad: 012 */
+header a:hover {
+    color: #fad02c; /* Hereda background-color de body */
+}
+
+/* especificidad: 010 */
 .active {
-    color: #fad02c;
-    /* Hereda background-color de body */
+    color: #fad02c; /* Hereda background-color de body */
 }
 
-/* header + p -> Especificidad: 002 */
+/* especificidad: 002 */
 header + p {
     font-size: 12px;
 }
 
-/* ul, ol -> Especificidad: 001 */
+/* especificidad: 001 */
 ul, ol {
     padding-left: 2em;
     margin-bottom: 1em;
 }
 
-/* li -> Especificidad: 001 */
+/* especificidad: 001 */
 li {
     margin-bottom: 0.3em;
     font-size: 1rem;
     padding: 0.2em 0.5em;
-    background: #97b9cf;
-    /* Hereda color de body */
+    background: #B6CFDD; /* Hereda color de body */
 }
 
-/* dl -> Especificidad: 001 */
+/* especificidad: 001 */
 dl {
     margin: 1em 0 1.5em 0;
     padding: 0.5em 1em;
-    background: #97b9cf;
-    /* Hereda color de body */
+    background: #B6CFDD; /* Hereda color de body */
 }
 
-/* dt -> Especificidad: 001 */
+/* especificidad: 001 */
 dt {
     font-weight: bold;
     font-size: 1.1em;
@@ -88,42 +82,35 @@ dt {
     margin-top: 0.5em;
     margin-bottom: 0.1em;
     display: inline-block;
-    background: #88b2cc;
-    /* Hereda color de body */  
+    background: #9ABED5; /* Hereda color de body */  
 }
 
-/* dd -> Especificidad: 001 */
+/* especificidad: 001 */
 dd {
     margin-left: 1.5em;
     margin-bottom: 0.5em;
     font-size: 1em;
 }
 
-/* table -> Especificidad: 001 */
+/* especificidad: 001 */
 table {
     width: 100%;
     margin-bottom: 1.5em;
     font-size: 1rem;
 }
 
-/* th, td -> Especificidad: 001 */
+/* especificidad: 001 */
+/* especificidad: 001 */
 th, td {
-    padding: 0.5em 0.8em;
     text-align: center;
-     background: #97b9cf;
-    /* Hereda color de body */
+    background: #B6CFDD; /* Hereda color de body */
 }
 
-/* a[href^="http"] -> Especificidad: 011 */
+/* especificidad: 011 */
 a[href^="http"] {
     color: #0c2d48;
-    background: #97b9cf;
-    border-bottom: 2px dashed #fad02c;
+    background: #B6CFDD;
+    text-decoration: none;
+    border-bottom: 2px dashed #0c2d48;
     padding: 0.1em 0.2em;
-}
-
-/* h1 a -> Especificidad = 002 */
-h1 a {
-    color: #fad02c;
-    /* Hereda background-color de header */
 }

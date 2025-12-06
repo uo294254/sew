@@ -38,10 +38,10 @@ echo "
     <meta charset='UTF-8' />
     <meta name='author' content='Mario Trelles' />
     <meta name='description' content='Clasificaciones MotoGP-Desktop' />
-    <meta name='keywords' content='MotoGP, Clasificación' />
+    <meta name='keywords' content='MotoGP, Clasificación, Ganador' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
 
-    <title>MotoGP - Clasificaciones</title>
+    <title>MotoGP-Clasificaciones</title>
     <link rel='icon' href='multimedia/favicon.ico'>
     <link rel='stylesheet' href='estilo/estilo.css'>
     <link rel='stylesheet' href='estilo/layout.css'>

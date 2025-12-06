@@ -36,6 +36,7 @@ article img {
     position: absolute;
     border-radius: 0.5em;
     background: #1C7CCC;
+    color: #fad02c;
     backface-visibility: hidden;
 }
 
