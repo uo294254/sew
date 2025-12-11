@@ -6,8 +6,6 @@ class Circuito {
         
         const inputArchivo = document.querySelector('input[accept=".html"]');
         this.seccionInfo = document.querySelector('section:first-of-type');
-        this.contenedorHTML = document.createElement('p');
-        this.seccionInfo.appendChild(this.contenedorHTML);
 
         if (inputArchivo) {
             inputArchivo.addEventListener("change", (e) => {
@@ -37,11 +35,9 @@ class Circuito {
         const parser = new DOMParser();
         const doc = parser.parseFromString(textoHTML, "text/html");
 
-        this.contenedorHTML.innerHTML = "";
-
         doc.querySelectorAll("section").forEach(s => {
             const section = s.cloneNode(true);
-            this.contenedorHTML.appendChild(section);
+            this.seccionInfo.appendChild(section);
         });
     }
 

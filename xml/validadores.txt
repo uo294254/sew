@@ -17,4 +17,7 @@ esquemaCircuito.svg a pdf
 capturar pantalla subiendo circuito.kml a Google earth a planimetria.pdf
 altimetria.svg a altimetria.pdf
 
-arreglar migas de navegación (meter dentro de otro nav?)
+arreglar migas de navegación
+label for en test
+error por p en circuito.html al meter infocircuito
+contraste en las cartas
