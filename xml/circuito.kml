@@ -11,105 +11,313 @@
     </Placemark>
     <Placemark>
       <name>Tramo1</name>
-      <description>Distancia de tramo: 350m</description>
+      <description>Distancia de tramo: 330m</description>
       <Point>
-        <coordinates>-6.0336,36.7125,45.77</coordinates>
+        <coordinates>-6.033901190294554,36.71244984817293,45.16377878698994</coordinates>
         <altitudeMode>relativeToGround</altitudeMode>
       </Point>
     </Placemark>
     <Placemark>
       <name>Tramo2</name>
-      <description>Distancia de tramo: 250m</description>
+      <description>Distancia de tramo: 25m</description>
       <Point>
-        <coordinates>-6.0311,36.7125,48.7</coordinates>
+        <coordinates>-6.033811503166589,36.71263187443232,45.71401320626065</coordinates>
         <altitudeMode>relativeToGround</altitudeMode>
       </Point>
     </Placemark>
     <Placemark>
       <name>Tramo3</name>
-      <description>Distancia de tramo: 100m</description>
+      <description>Distancia de tramo: 25m</description>
       <Point>
-        <coordinates>-6.0319,36.7117,44.72</coordinates>
+        <coordinates>-6.033602561281616,36.71273957149641,46.51817923263169</coordinates>
         <altitudeMode>relativeToGround</altitudeMode>
       </Point>
     </Placemark>
     <Placemark>
       <name>Tramo4</name>
-      <description>Distancia de tramo: 250m</description>
+      <description>Distancia de tramo: 200m</description>
       <Point>
-        <coordinates>-6.0317,36.7097,40.31</coordinates>
+        <coordinates>-6.031392598503689,36.71275249940201,48.38442696251465</coordinates>
         <altitudeMode>relativeToGround</altitudeMode>
       </Point>
     </Placemark>
     <Placemark>
       <name>Tramo5</name>
-      <description>Distancia de tramo: 750m</description>
+      <description>Distancia de tramo: 25m</description>
       <Point>
-        <coordinates>-6.0272,36.7084,50.91</coordinates>
+        <coordinates>-6.031212942592031,36.71264095216015,48.45865435901233</coordinates>
         <altitudeMode>relativeToGround</altitudeMode>
       </Point>
     </Placemark>
     <Placemark>
       <name>Tramo6</name>
-      <description>Distancia de tramo: 250m</description>
+      <description>Distancia de tramo: 25m</description>
       <Point>
-        <coordinates>-6.0331,36.7042,45.8</coordinates>
+        <coordinates>-6.031157644581491,36.71245580610585,48.39312980872933</coordinates>
         <altitudeMode>relativeToGround</altitudeMode>
       </Point>
     </Placemark>
     <Placemark>
       <name>Tramo7</name>
-      <description>Distancia de tramo: 300m</description>
+      <description>Distancia de tramo: 25m</description>
       <Point>
-        <coordinates>-6.0322,36.7064,40.11</coordinates>
+        <coordinates>-6.03132408472354,36.71227800939405,47.17784964813864</coordinates>
         <altitudeMode>relativeToGround</altitudeMode>
       </Point>
     </Placemark>
     <Placemark>
       <name>Tramo8</name>
-      <description>Distancia de tramo: 350m</description>
+      <description>Distancia de tramo: 25m</description>
       <Point>
-        <coordinates>-6.0344,36.7082,35.96</coordinates>
+        <coordinates>-6.031880531951784,36.71195730020057,45.41356013539985</coordinates>
         <altitudeMode>relativeToGround</altitudeMode>
       </Point>
     </Placemark>
     <Placemark>
       <name>Tramo9</name>
-      <description>Distancia de tramo: 150m</description>
+      <description>Distancia de tramo: 50m</description>
       <Point>
-        <coordinates>-6.0364,36.7059,39.25</coordinates>
+        <coordinates>-6.032092320611424,36.71164439543061,43.56210950893393</coordinates>
         <altitudeMode>relativeToGround</altitudeMode>
       </Point>
     </Placemark>
     <Placemark>
       <name>Tramo10</name>
-      <description>Distancia de tramo: 350m</description>
+      <description>Distancia de tramo: 30m</description>
       <Point>
-        <coordinates>-6.0378,36.7067,38.84</coordinates>
+        <coordinates>-6.03201682834019,36.71024779018552,40.59796097579625</coordinates>
         <altitudeMode>relativeToGround</altitudeMode>
       </Point>
     </Placemark>
     <Placemark>
       <name>Tramo11</name>
-      <description>Distancia de tramo: 200m</description>
+      <description>Distancia de tramo: 150m</description>
       <Point>
-        <coordinates>-6.0361,36.7092,33.94</coordinates>
+        <coordinates>-6.031724880659739,36.70977061061665,40.91541216756563</coordinates>
         <altitudeMode>relativeToGround</altitudeMode>
       </Point>
     </Placemark>
     <Placemark>
       <name>Tramo12</name>
-      <description>Distancia de tramo: 350m</description>
+      <description>Distancia de tramo: 40m</description>
       <Point>
-        <coordinates>-6.0344,36.7091,36.26</coordinates>
+        <coordinates>-6.031072103220117,36.70946608403563,42.44457601715511</coordinates>
         <altitudeMode>relativeToGround</altitudeMode>
       </Point>
     </Placemark>
     <Placemark>
       <name>Tramo13</name>
-      <description>Distancia de tramo: 300m</description>
+      <description>Distancia de tramo: 50m</description>
       <Point>
-        <coordinates>-6.0314,36.7069,40.66</coordinates>
+        <coordinates>-6.027856013767456,36.70908742945934,47.05280412015408</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo14</name>
+      <description>Distancia de tramo: 200m</description>
+      <Point>
+        <coordinates>-6.027387780263576,36.70880514406645,49.42035729041437</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo15</name>
+      <description>Distancia de tramo: 40m</description>
+      <Point>
+        <coordinates>-6.027188930797433,36.70840471475276,51.3852681945378</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo16</name>
+      <description>Distancia de tramo: 35m</description>
+      <Point>
+        <coordinates>-6.027261258863938,36.7079833397238,53.00661157494977</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo17</name>
+      <description>Distancia de tramo: 35m</description>
+      <Point>
+        <coordinates>-6.02752153513949,36.70762123284415,53.41887889093366</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo18</name>
+      <description>Distancia de tramo: 35m</description>
+      <Point>
+        <coordinates>-6.032887621985132,36.70414889985449,46.57839673935054</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo19</name>
+      <description>Distancia de tramo: 600m</description>
+      <Point>
+        <coordinates>-6.033172392766527,36.7041204698988,46.58900608599204</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo20</name>
+      <description>Distancia de tramo: 30m</description>
+      <Point>
+        <coordinates>-6.033374221980359,36.7042762163754,46.42121581502786</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo21</name>
+      <description>Distancia de tramo: 40m</description>
+      <Point>
+        <coordinates>-6.03338814746964,36.70449358039833,46.42117336991732</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo22</name>
+      <description>Distancia de tramo: 30m</description>
+      <Point>
+        <coordinates>-6.032392765120146,36.70612531086015,43.26635776314464</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo23</name>
+      <description>Distancia de tramo: 45m</description>
+      <Point>
+        <coordinates>-6.032477932896767,36.70670512537629,40.60943949514559</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo24</name>
+      <description>Distancia de tramo: 200m</description>
+      <Point>
+        <coordinates>-6.033893944251218,36.7081728175482,35.5791065234919</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo25</name>
+      <description>Distancia de tramo: 50m</description>
+      <Point>
+        <coordinates>-6.034421390203213,36.70838768337774,36.23630127742329</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo26</name>
+      <description>Distancia de tramo: 100m</description>
+      <Point>
+        <coordinates>-6.035056287394483,36.70827909719887,36.26304470178065</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo27</name>
+      <description>Distancia de tramo: 35m</description>
+      <Point>
+        <coordinates>-6.035567921880991,36.70792653147418,36.69337027476826</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo28</name>
+      <description>Distancia de tramo: 130m</description>
+      <Point>
+        <coordinates>-6.036387313072229,36.70615718474786,39.39320633968551</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo29</name>
+      <description>Distancia de tramo: 45m</description>
+      <Point>
+        <coordinates>-6.03690093483409,36.70601030837597,39.66981179268024</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo30</name>
+      <description>Distancia de tramo: 30m</description>
+      <Point>
+        <coordinates>-6.037811260708872,36.70653041621959,39.82512865461339</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo31</name>
+      <description>Distancia de tramo: 90m</description>
+      <Point>
+        <coordinates>-6.037907083643939,36.70682495597286,38.62130387679748</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo32</name>
+      <description>Distancia de tramo: 25m</description>
+      <Point>
+        <coordinates>-6.036609307351808,36.7089479430346,34.20235497408533</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo33</name>
+      <description>Distancia de tramo: 220m</description>
+      <Point>
+        <coordinates>-6.036097921648235,36.70924445579099,34.77875851856168</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo34</name>
+      <description>Distancia de tramo: 35m</description>
+      <Point>
+        <coordinates>-6.035603815402836,36.70928232988405,34.40149202724749</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo35</name>
+      <description>Distancia de tramo: 40m</description>
+      <Point>
+        <coordinates>-6.034160157958986,36.70916886915767,36.64704964156769</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo36</name>
+      <description>Distancia de tramo: 45m</description>
+      <Point>
+        <coordinates>-6.033872765822358,36.70901867688589,36.57207916846183</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo37</name>
+      <description>Distancia de tramo: 40m</description>
+      <Point>
+        <coordinates>-6.03180298375489,36.70697424710242,39.81727365386728</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo38</name>
+      <description>Distancia de tramo: 45m</description>
+      <Point>
+        <coordinates>-6.03135723592909,36.70695318330846,40.35599976978127</coordinates>
+        <altitudeMode>relativeToGround</altitudeMode>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tramo39</name>
+      <description>Distancia de tramo: 50m</description>
+      <Point>
+        <coordinates>-6.031255993090047,36.70728029349796,40.80452706492527</coordinates>
         <altitudeMode>relativeToGround</altitudeMode>
       </Point>
     </Placemark>
@@ -119,19 +327,45 @@
         <extrude>1</extrude>
         <tessellation>1</tessellation>
         <coordinates>-6.0322,36.7094,39.08
--6.0336,36.7125,45.77
--6.0311,36.7125,48.7
--6.0319,36.7117,44.72
--6.0317,36.7097,40.31
--6.0272,36.7084,50.91
--6.0331,36.7042,45.8
--6.0322,36.7064,40.11
--6.0344,36.7082,35.96
--6.0364,36.7059,39.25
--6.0378,36.7067,38.84
--6.0361,36.7092,33.94
--6.0344,36.7091,36.26
--6.0314,36.7069,40.66
+-6.033901190294554,36.71244984817293,45.16377878698994
+-6.033811503166589,36.71263187443232,45.71401320626065
+-6.033602561281616,36.71273957149641,46.51817923263169
+-6.031392598503689,36.71275249940201,48.38442696251465
+-6.031212942592031,36.71264095216015,48.45865435901233
+-6.031157644581491,36.71245580610585,48.39312980872933
+-6.03132408472354,36.71227800939405,47.17784964813864
+-6.031880531951784,36.71195730020057,45.41356013539985
+-6.032092320611424,36.71164439543061,43.56210950893393
+-6.03201682834019,36.71024779018552,40.59796097579625
+-6.031724880659739,36.70977061061665,40.91541216756563
+-6.031072103220117,36.70946608403563,42.44457601715511
+-6.027856013767456,36.70908742945934,47.05280412015408
+-6.027387780263576,36.70880514406645,49.42035729041437
+-6.027188930797433,36.70840471475276,51.3852681945378
+-6.027261258863938,36.7079833397238,53.00661157494977
+-6.02752153513949,36.70762123284415,53.41887889093366
+-6.032887621985132,36.70414889985449,46.57839673935054
+-6.033172392766527,36.7041204698988,46.58900608599204
+-6.033374221980359,36.7042762163754,46.42121581502786
+-6.03338814746964,36.70449358039833,46.42117336991732
+-6.032392765120146,36.70612531086015,43.26635776314464
+-6.032477932896767,36.70670512537629,40.60943949514559
+-6.033893944251218,36.7081728175482,35.5791065234919
+-6.034421390203213,36.70838768337774,36.23630127742329
+-6.035056287394483,36.70827909719887,36.26304470178065
+-6.035567921880991,36.70792653147418,36.69337027476826
+-6.036387313072229,36.70615718474786,39.39320633968551
+-6.03690093483409,36.70601030837597,39.66981179268024
+-6.037811260708872,36.70653041621959,39.82512865461339
+-6.037907083643939,36.70682495597286,38.62130387679748
+-6.036609307351808,36.7089479430346,34.20235497408533
+-6.036097921648235,36.70924445579099,34.77875851856168
+-6.035603815402836,36.70928232988405,34.40149202724749
+-6.034160157958986,36.70916886915767,36.64704964156769
+-6.033872765822358,36.70901867688589,36.57207916846183
+-6.03180298375489,36.70697424710242,39.81727365386728
+-6.03135723592909,36.70695318330846,40.35599976978127
+-6.031255993090047,36.70728029349796,40.80452706492527
 -6.0322,36.7094,39.08</coordinates>
         <altitudeMode>relativeToGround</altitudeMode>
       </LineString>

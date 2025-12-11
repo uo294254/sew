@@ -19,41 +19,27 @@ class Configuracion {
             "respuestas",
             "observaciones",
             "tests", 
-            "usuarios",
-            "dispositivos",
-            "pericias",
-            "generos",
-            "profesiones"
+            "usuarios"
         ];
 
         foreach ($tablas as $tabla) {
             $this->conexion->query("DELETE FROM $tabla");
         }
 
-        echo "<p>Base de datos reiniciada correctamente</p>";
+        echo "<p>Base de datos reiniciada </p>";
     }
 
     public function eliminarBD() {
         $this->conexion->query("DROP DATABASE IF EXISTS $this->database");
 
-        echo "<p>Base de datos eliminada correctamente</p>";
+        echo "<p>Base de datos eliminada </p>";
     }
 
     public function exportarCSV() {
         $resultado = $this->conexion->query("SELECT * FROM tests");
 
-        if (!$resultado) {
-            echo "<p>Error al consultar datos: " . $this->conexion->error . "</p>";
-            return;
-        }
-
         $archivo = "tests.csv";
         $fp = fopen($archivo, "w");
-
-        if (!$fp) {
-            echo "<p>Error al crear el archivo CSV</p>";
-            return;
-        }
 
         if ($resultado->num_rows > 0) {
             $primeraFila = $resultado->fetch_assoc();
@@ -66,7 +52,6 @@ class Configuracion {
         }
 
         fclose($fp);
-
         echo "<p>Datos exportados a $archivo</p>";
     }
 

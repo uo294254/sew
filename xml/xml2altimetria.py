@@ -1,9 +1,9 @@
-# # -*- coding: utf-8 -*-
-""""
+# -*- coding: utf-8 -*-
+"""
 Crea archivos SVG con rectángulos, círculos, líneas, polilíneas y texto
 
-@version 1.0 18/Octubre/2024
-@author: Juan Manuel Cueva Lovelle. Universidad de Oviedo
+@version 1.0 22/Octubre/2025
+@author: Mario Trelles Riestra. Universidad de Oviedo
 """
 
 import xml.etree.ElementTree as ET
@@ -11,8 +11,8 @@ import xml.etree.ElementTree as ET
 class Svg(object):
     """
     Genera archivos SVG con rectángulos, círculos, líneas, polilíneas y texto
-    @version 1.0 18/Octubre/2024
-    @author: Juan Manuel Cueva Lovelle. Universidad de Oviedo
+    @version 1.0 22/Octubre/2025
+    @author: Mario Trelles Riestra. Universidad de Oviedo
     """
     def __init__(self):
         """
@@ -20,12 +20,11 @@ class Svg(object):
         """
         self.raiz = ET.Element('svg', xmlns="http://www.w3.org/2000/svg", version="2.0")
 
-
-    def addRect(self,x,y,width,height,fill, strokeWidth,stroke):
+    def addRect(self, x, y, width, height, fill, strokeWidth, stroke):
         """
         Añade un elemento rect
         """
-        ET.SubElement(self.raiz,'rect',
+        ET.SubElement(self.raiz, 'rect',
                       x=x,
                       y=y,
                       width=width,
@@ -34,21 +33,21 @@ class Svg(object):
                       strokeWidth=strokeWidth,
                       stroke=stroke)
 
-    def addCircle(self,cx,cy,r,fill):
+    def addCircle(self, cx, cy, r, fill):
         """
         Añade un elemento circle
         """
-        ET.SubElement(self.raiz,'circle',
+        ET.SubElement(self.raiz, 'circle',
                       cx=cx,
                       cy=cy,
                       r=r,
                       fill=fill)
 
-    def addLine(self,x1,y1,x2,y2,stroke,strokeWith):
+    def addLine(self, x1, y1, x2, y2, stroke, strokeWith):
         """
         Añade un elemento line
         """
-        ET.SubElement(self.raiz,'line',
+        ET.SubElement(self.raiz, 'line',
                       x1=x1,
                       y1=y1,
                       x2=x2,
@@ -56,43 +55,36 @@ class Svg(object):
                       stroke=stroke,
                       strokeWith=strokeWith)
 
-    def addPolyline(self,points,stroke,strokeWith,fill):
+    def addPolyline(self, points, stroke, strokeWith, fill):
         """
         Añade un elemento polyline
         """
-        ET.SubElement(self.raiz,'polyline',
+        ET.SubElement(self.raiz, 'polyline',
                       points=points,
                       stroke=stroke,
                       strokeWith=strokeWith,
                       fill=fill)
 
-    def addText(self,texto,x,y,fontFamily,fontSize,style):
+    def addText(self, texto, x, y, fontFamily, fontSize, style):
         """
         Añade un elemento texto
         """
-        ET.SubElement(self.raiz,'text',
+        ET.SubElement(self.raiz, 'text',
                       x=x,
                       y=y,
                       fontFamily=fontFamily,
                       fontSize=fontSize,
-                      style=style).text=texto
+                      style=style).text = texto
 
-    def escribir(self,nombreArchivoSVG):
-        """ de
+    def escribir(self, nombreArchivoSVG):
+        """
         Escribe el archivo SVG con declaración y codificación
         """
         arbol = ET.ElementTree(self.raiz)
-
-        """
-        Introduce indentacióon y saltos de línea
-        para generar XML en modo texto
-        """
         ET.indent(arbol)
-
         arbol.write(nombreArchivoSVG,
                     encoding='utf-8',
-                    xml_declaration=True
-                    )
+                    xml_declaration=True)
 
     def ver(self):
         """
@@ -101,46 +93,46 @@ class Svg(object):
         print("\nElemento raiz = ", self.raiz.tag)
 
         if self.raiz.text != None:
-            print("Contenido = "    , self.raiz.text.strip('\n')) #strip() elimina los '\n' del string
+            print("Contenido = ", self.raiz.text.strip('\n'))
         else:
-            print("Contenido = "    , self.raiz.text)
+            print("Contenido = ", self.raiz.text)
 
-        print("Atributos = "    , self.raiz.attrib)
+        print("Atributos = ", self.raiz.attrib)
 
-        # Recorrido de los elementos del árbol
-        for hijo in self.raiz.findall('.//'): # Expresión XPath
-            print("\nElemento = " , hijo.tag)
+        for hijo in self.raiz.findall('./'):
+            print("\nElemento = ", hijo.tag)
             if hijo.text != None:
-                print("Contenido = ", hijo.text.strip('\n')) #strip() elimina los '\n' del string
+                print("Contenido = ", hijo.text.strip('\n'))
             else:
                 print("Contenido = ", hijo.text)
             print("Atributos = ", hijo.attrib)
 
 def main():
-
     print(Svg.__doc__)
 
     tree = ET.parse('circuitoEsquema.xml')
     root = tree.getroot()
+
     ns = {'ns': 'http://www.uniovi.es'}
 
     nombreSVG = "altimetria.svg"
-
     nuevoSVG = Svg()
 
     ancho_svg = 800
     alto_svg = 400
     margen = 50
 
-    origen = root.find('ns:punto_origen', ns)
-    alt_origen = float(origen.find('ns:altitud_geo', ns).text)
+    origen = root.find(f'.//{{{ns["ns"]}}}punto_origen')
+    alt_origen = float(origen.find(f'{{{ns["ns"]}}}altitud_geo').text)
+
     altitudes = [alt_origen]
     distancias = [0.0]
 
+    tramos = root.findall(f'.//{{{ns["ns"]}}}tramos/{{{ns["ns"]}}}tramo')
 
-    for tramo in root.findall('ns:tramos/ns:tramo', ns):
-        dist = float(tramo.find('ns:distancia', ns).text)
-        alt = float(tramo.find('ns:altitud_geo', ns).text)
+    for tramo in tramos:
+        dist = float(tramo.find(f'{{{ns["ns"]}}}distancia').text)
+        alt = float(tramo.find(f'{{{ns["ns"]}}}altitud_geo').text)
         distancias.append(distancias[-1] + dist)
         altitudes.append(alt)
 
@@ -159,12 +151,10 @@ def main():
     puntos_svg.append(f"{margen + (ancho_svg - 2*margen)},{alto_svg - margen}")
     puntos_str = ' '.join(puntos_svg)
 
-    nuevoSVG.addPolyline(puntos_str, 'red', '2', 'lightblue')
+    nuevoSVG.addPolyline(puntos_str, 'red', '2', 'orange')
 
-    """Visualización del SVG creado"""
     nuevoSVG.ver()
 
-    """Creación del archivo en formato SVG"""
     nuevoSVG.escribir(nombreSVG)
     print("Creado el archivo: ", nombreSVG)
 

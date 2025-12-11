@@ -7,43 +7,59 @@ class Html:
     @author: Mario Trelles Riestra. Universidad de Oviedo
     """
     def __init__(self, titulo="Información del Circuito"):
-        """
-        Crea el elemento raíz <html> y el <head> con enlace al CSS
-        """
-        self.root = ET.Element('html', lang="es")
-        head = ET.SubElement(self.root, 'head')
-        ET.SubElement(head, 'meta', charset="UTF-8")
-        ET.SubElement(head, 'title').text = titulo
-        ET.SubElement(head, 'link', rel="stylesheet", href="../estilo/estilo.css")
-        self.body = ET.SubElement(self.root, 'body')
-        ET.SubElement(self.body, 'h1').text = titulo
+        self.root = ET.Element("html", lang="es")
 
-    def addParagraph(self, texto):
-        """
-        Añade un párrafo <p> al body
-        """
-        ET.SubElement(self.body, 'p').text = texto
+        head = ET.SubElement(self.root, "head")
+        ET.SubElement(head, "meta", charset="UTF-8")
+        ET.SubElement(head, "title").text = titulo
+        ET.SubElement(head, "link", rel="stylesheet", href="estilo/estilo.css")
 
-    def addTable(self, filas):
+        self.body = ET.SubElement(self.root, "body")
+        ET.SubElement(self.body, "h1").text = titulo
+
+    def newSection(self, titulo_h3=None):
         """
-        Añade una tabla <table> con contenido en filas (lista de listas)
+        Crea una nueva sección y devuelve el elemento
         """
-        table = ET.SubElement(self.body, 'table')
-        for fila in filas:
-            tr = ET.SubElement(table, 'tr')
-            for celda in fila:
-                ET.SubElement(tr, 'td').text = str(celda)
+        section = ET.SubElement(self.body, "section")
+        if titulo_h3:
+            ET.SubElement(section, "h3").text = titulo_h3
+        return section
+
+    def addListTo(self, parent, items):
+        ul = ET.SubElement(parent, "ul")
+        for item in items:
+            ET.SubElement(ul, "li").text = item
+
+    def addLinkTo(self, parent, texto, url):
+        a = ET.SubElement(parent, "a", href=url, target="_blank")
+        a.text = texto
+
+    def addImageTo(self, parent, archivo, alt="Imagen"):
+        ET.SubElement(parent, "img", src=archivo, alt=alt)
+
+    def addVideoTo(self, parent, archivo):
+        video = ET.SubElement(parent, "video", controls="controls")
+        ET.SubElement(video, "source", src=archivo, type="video/mp4")
+
+    def addParagraphTo(self, parent, texto):
+        ET.SubElement(parent, "p").text = texto
 
     def escribir(self, nombreArchivoHTML):
-        """
-        Escribe el archivo HTML con indentación
-        """
         arbol = ET.ElementTree(self.root)
         ET.indent(arbol)
-        with open(nombreArchivoHTML, 'w', encoding='utf-8') as f:
+        with open(nombreArchivoHTML, "w", encoding="utf-8") as f:
             f.write("<!DOCTYPE html>\n")
-            arbol.write(f, encoding='unicode', method='html')
-        print(f"Archivo HTML creado: {nombreArchivoHTML}")
+            arbol.write(f, encoding="unicode", method="html")
+        print("Archivo HTML creado:", nombreArchivoHTML)
+
+    def formatear_duracion(self, iso):
+        partes = iso.split("M")
+        minutos = partes[0]
+        minutos = minutos[2:]
+        segundos = partes[1]
+        segundos = segundos[:5]
+        return f"{minutos} minutos y {segundos} segundos"
 
 def main():
     tree = ET.parse('circuitoEsquema.xml')
@@ -52,56 +68,78 @@ def main():
 
     html = Html("Información del Circuito")
 
-    nombre = root.find('ns:nombre', ns).text
-    longitud = root.find('ns:longitud', ns).text
-    unidades_longitud = root.find('ns:longitud', ns).attrib.get('unidades')
-    anchura = root.find('ns:anchura', ns).text
-    unidades_anchura = root.find('ns:anchura', ns).attrib.get('unidades')
-    fecha = root.find('ns:fecha', ns).text
-    hora = root.find('ns:hora', ns).text
-    vueltas = root.find('ns:vueltas', ns).text
-    localidad = root.find('ns:localidad', ns).text
-    pais = root.find('ns:pais', ns).text
-    patrocinador = root.find('ns:patrocinador', ns).text
+    nombre = root.find(f'.//{{{ns["ns"]}}}nombre').text
 
-    html.addTable([
-        ["Nombre", nombre],
-        ["Longitud", f"{longitud} {unidades_longitud}"],
-        ["Anchura", f"{anchura} {unidades_anchura}"],
-        ["Fecha", fecha],
-        ["Hora", hora],
-        ["Vueltas", vueltas],
-        ["Localidad", localidad],
-        ["País", pais],
-        ["Patrocinador", patrocinador]
+    longitud_elem = root.find(f'.//{{{ns["ns"]}}}longitud')
+    longitud = longitud_elem.text
+    unidades_longitud = longitud_elem.get('unidades')
+
+    anchura_elem = root.find(f'.//{{{ns["ns"]}}}anchura')
+    anchura = anchura_elem.text
+    unidades_anchura = anchura_elem.get('unidades')
+
+    fecha = root.find(f'.//{{{ns["ns"]}}}fecha').text
+    hora = root.find(f'.//{{{ns["ns"]}}}hora').text
+    vueltas = root.find(f'.//{{{ns["ns"]}}}vueltas').text
+    localidad = root.find(f'.//{{{ns["ns"]}}}localidad').text
+    pais = root.find(f'.//{{{ns["ns"]}}}pais').text
+    patrocinador = root.find(f'.//{{{ns["ns"]}}}patrocinador').text
+
+    sec_datos = html.newSection("Datos del Circuito")
+    html.addListTo(sec_datos, [
+        f"Nombre: {nombre}",
+        f"Longitud: {longitud} {unidades_longitud}",
+        f"Anchura: {anchura} {unidades_anchura}",
+        f"Fecha: {fecha}",
+        f"Hora: {hora}",
+        f"Vueltas: {vueltas}",
+        f"Localidad: {localidad}",
+        f"País: {pais}",
+        f"Patrocinador: {patrocinador}"
     ])
 
-    referencias = root.findall('ns:referencias/ns:referencia', ns)
-    html.addParagraph("Referencias:")
-    for r in referencias:
-        html.addParagraph(f"- {r.text}")
+    referencias = root.findall(f'.//{{{ns["ns"]}}}referencias/{{{ns["ns"]}}}referencia')
+    if referencias:
+        sec_ref = html.newSection("Referencias")
+        for r in referencias:
+            html.addLinkTo(sec_ref, r.text, r.text)
 
-    fotos = root.findall('ns:fotos/ns:foto', ns)
-    for foto in fotos:
-        img = ET.SubElement(html.body, 'img')
-        img.set('src', foto.attrib['archivo'])
-        img.set('alt', foto.text)
+    fotos = root.findall(f'.//{{{ns["ns"]}}}fotos/{{{ns["ns"]}}}foto')
+    if fotos:
+        sec_fotos = html.newSection("Fotos")
+        for foto in fotos:
+            html.addImageTo(
+                sec_fotos,foto.get('archivo'),
+                foto.text if foto.text else "Foto del circuito"
+            )
 
-    videos = root.findall('ns:videos/ns:video', ns)
-    for video in videos:
-        vid = ET.SubElement(html.body, 'video', controls="controls")
-        source = ET.SubElement(vid, 'source', src=video.attrib['archivo'], type="video/mp4")
+    videos = root.findall(f'.//{{{ns["ns"]}}}videos/{{{ns["ns"]}}}video')
+    if videos:
+        sec_videos = html.newSection("Videos")
+        for video in videos:
+            html.addVideoTo(sec_videos, video.get('archivo'))
 
-    resultado = root.find('ns:resultado', ns)
-    vencedor = resultado.find('ns:vencedor', ns).text
-    tiempo = resultado.find('ns:tiempo', ns).text
-    html.addParagraph(f"Vencedor: {vencedor}, Tiempo: {tiempo}")
+    resultado = root.find(f'.//{{{ns["ns"]}}}resultado')
+    if resultado is not None:
+        sec_result = html.newSection("Resultado")
+        vencedor = resultado.find(f'{{{ns["ns"]}}}vencedor').text
+        tiempo_iso = resultado.find(f'{{{ns["ns"]}}}tiempo').text
+        html.addParagraphTo(sec_result, f"Vencedor: {vencedor}")
+        tiempo_formateado = html.formatear_duracion(tiempo_iso)
+        html.addParagraphTo(sec_result, f"Tiempo: {tiempo_formateado}")
 
-    clasificacion = root.find('ns:clasificacion', ns)
-    piloto1 = clasificacion.find('ns:piloto1', ns).text
-    piloto2 = clasificacion.find('ns:piloto2', ns).text
-    piloto3 = clasificacion.find('ns:piloto3', ns).text
-    html.addParagraph(f"Clasificación: {piloto1}, {piloto2}, {piloto3}")
+    clasificacion = root.find(f'.//{{{ns["ns"]}}}clasificacion')
+    if clasificacion is not None:
+        piloto1 = clasificacion.find(f'{{{ns["ns"]}}}piloto1').text
+        piloto2 = clasificacion.find(f'{{{ns["ns"]}}}piloto2').text
+        piloto3 = clasificacion.find(f'{{{ns["ns"]}}}piloto3').text
+
+        sec_clas = html.newSection("Clasificación")
+        html.addListTo(sec_clas, [
+            f"1º: {piloto1}",
+            f"2º: {piloto2}",
+            f"3º: {piloto3}"
+        ])
 
     html.escribir("InfoCircuito.html")
 

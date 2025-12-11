@@ -1,0 +1,20 @@
+Validador W3C HTML: 	https://validator.w3.org/nu/
+
+Validador W3C CSS:	https://jigsaw.w3.org/css-validator/	Seleccionar la opción “TODAS”
+
+Adaptabilidad web:	http://iloveadaptive.com/
+
+Accesibilidad Web: 	https://wave.webaim.org/report#/https://uo294254.github.io/sew/
+			https://achecks.org/achecker
+
+
+https://uo294254.github.io/sew/
+https://github.com/uo294254/sew/
+
+
+circuito.svg a pdf
+esquemaCircuito.svg a pdf 
+capturar pantalla subiendo circuito.kml a Google earth a planimetria.pdf
+altimetria.svg a altimetria.pdf
+
+arreglar migas de navegación (meter dentro de otro nav?)

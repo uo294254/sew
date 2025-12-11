@@ -4,8 +4,10 @@ class Circuito {
     constructor() {
         this.comprobarApiFile();
         
-        const inputArchivo = document.querySelector('input[type="file"]:first-of-type');
+        const inputArchivo = document.querySelector('input[accept=".html"]');
         this.seccionInfo = document.querySelector('section:first-of-type');
+        this.contenedorHTML = document.createElement('p');
+        this.seccionInfo.appendChild(this.contenedorHTML);
 
         if (inputArchivo) {
             inputArchivo.addEventListener("change", (e) => {
@@ -35,62 +37,14 @@ class Circuito {
         const parser = new DOMParser();
         const doc = parser.parseFromString(textoHTML, "text/html");
 
-        this.seccionInfo.innerHTML = "";
+        this.contenedorHTML.innerHTML = "";
 
-        const titulo = doc.querySelector("h1")?.textContent;
-        if (titulo) {
-            const h2 = document.createElement("h2");
-            h2.textContent = titulo;
-            this.seccionInfo.appendChild(h2);
-        }
-
-        const tablaOriginal = doc.querySelector("table");
-        if (tablaOriginal) {
-            const tablaNueva = document.createElement("table");
-
-            tablaOriginal.querySelectorAll("tr").forEach(fila => {
-                const nuevaFila = document.createElement("tr");
-
-                fila.querySelectorAll("td").forEach(td => {
-                    const nuevoTD = document.createElement("td");
-                    nuevoTD.textContent = td.textContent;
-                    nuevaFila.appendChild(nuevoTD);
-                });
-
-                tablaNueva.appendChild(nuevaFila);
-            });
-
-            this.seccionInfo.appendChild(tablaNueva);
-        }
-        
-        doc.querySelectorAll("p").forEach(p => {
-            const nuevoP = document.createElement("p");
-            nuevoP.textContent = p.textContent;
-            this.seccionInfo.appendChild(nuevoP);
-        });
-
-        doc.querySelectorAll("img").forEach(img => {
-            const nuevaImg = document.createElement("img");
-            nuevaImg.src = img.getAttribute("src").replace("../", "");
-            nuevaImg.alt = img.getAttribute("alt");
-            this.seccionInfo.appendChild(nuevaImg);
-        });
-
-        doc.querySelectorAll("video").forEach(video => {
-            const nuevoVideo = document.createElement("video");
-            nuevoVideo.controls = true;
-
-            const source = video.querySelector("source");
-            if (source) {
-                const nuevoSource = document.createElement("source");
-                nuevoSource.src = source.getAttribute("src").replace("../", "");
-                nuevoSource.type = source.getAttribute("type");
-                nuevoVideo.appendChild(nuevoSource);
-            }
-
-            this.seccionInfo.appendChild(nuevoVideo);
+        doc.querySelectorAll("section").forEach(s => {
+            const section = s.cloneNode(true);
+            this.contenedorHTML.appendChild(section);
         });
     }
+
 }
 
 class CargadorSVG {
@@ -98,8 +52,10 @@ class CargadorSVG {
     constructor() {    
         this.comprobarApiFile();
 
-        const inputArchivo = document.querySelector('input[type="file"]:nth-of-type(2)');
+        const inputArchivo = document.querySelector('input[accept=".svg"]');
         this.seccionSVG = document.querySelector('section:nth-of-type(2)');
+        this.contenedorSVG = document.createElement('p');
+        this.seccionSVG.appendChild(this.contenedorSVG);
 
         if (inputArchivo) {
             inputArchivo.addEventListener("change", (e) => {
@@ -131,24 +87,25 @@ class CargadorSVG {
 
         const elementoSVG = docSVG.documentElement;
 
-        this.seccionSVG.innerHTML = "";
-        this.seccionSVG.appendChild(elementoSVG);
+        elementoSVG.setAttribute('width', '750');
+        elementoSVG.setAttribute('height', '350');
+        elementoSVG.setAttribute('viewBox', '0 0 750 350');
+
+        this.contenedorSVG.innerHTML = "";
+        this.contenedorSVG.appendChild(elementoSVG);
     }
 
 }
 
-"use strict";
-
 class CargadorKML {
     constructor() {
-        this.inputArchivo = document.querySelector('input[type="file"]:nth-of-type(3)');
+        this.inputArchivo = document.querySelector('input[accept=".kml"]');
         this.divMapa = document.querySelector('div:last-of-type');
         this.mapa = null;
 
-        this.inicializarMapa();
-
         if (this.inputArchivo) {
             this.inputArchivo.addEventListener("change", (e) => {
+                this.inicializarMapa();
                 const archivo = e.target.files[0];
                 if (archivo) this.leerArchivoKML(archivo);
             });
@@ -203,7 +160,6 @@ class CargadorKML {
         });
     }
 }
-
 
 const circuito = new Circuito();
 const cargadorSVG  = new CargadorSVG();

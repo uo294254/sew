@@ -114,3 +114,18 @@ a[href^="http"] {
     border-bottom: 2px dashed #0c2d48;
     padding: 0.1em 0.2em;
 }
+
+img {
+    max-width: 100%;    /* La imagen nunca supera el contenedor */
+    height: auto;       /* Mantiene la proporción original */
+    display: block;     /* Evita pequeños espacios debajo de la imagen */
+    margin: 0 auto;     /* Centra la imagen si es block */
+}
+
+
+video {
+    max-width: 20%;    /* La imagen nunca supera el contenedor */
+    height: auto;       /* Mantiene la proporción original */
+    display: block;     /* Evita pequeños espacios debajo de la imagen */
+    margin: 0 auto;     /* Centra la imagen si es block */
+}
