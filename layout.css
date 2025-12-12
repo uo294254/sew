@@ -59,7 +59,7 @@ main > div {
     /* especificidad: 003 */
 	header nav a {
         text-align: left;
-		width: 90%;
+		width: 85%;
         padding: 1em; /* Redefinición: padding-bottom, padding-left, padding-top y padding-right */
 	}
 	
