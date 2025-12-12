@@ -65,7 +65,6 @@ class Carrusel {
         const foto = this.#fotos[this.#actual];
         
         $("article h2 ~ img").remove();
-        
         this.$contenedor.after(`<img src="${foto.url}" alt="${foto.titulo}" />`);
 
         if (this.#actual < this.#maximo - 1) {

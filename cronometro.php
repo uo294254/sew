@@ -46,7 +46,7 @@ echo "
 </header>
 
 <p>
-    Estás en: <a href='index.html'>Inicio</a> || Cronometro
+    Estás en: <a href='index.html'>Inicio</a> || <a href='juegos.html'>Juegos</a> || Cronometro
 </p>
 
 <main>

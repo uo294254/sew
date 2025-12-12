@@ -25,7 +25,17 @@ $clasificacion = new Clasificacion();
 $xml = $clasificacion->consultar();
 
 $ganador = (string)$xml->resultado->vencedor;
-$tiempo  = (string)$xml->resultado->tiempo;
+$tiempoRaw = (string)$xml->resultado->tiempo;
+
+preg_match('/PT(\d+)M([\d\.]+)S/', $tiempoRaw, $match);
+$minutos = intval($match[1]);
+$segundosFloat = floatval($match[2]);
+$segundos = floor($segundosFloat);
+$decimas = floor(($segundosFloat - $segundos) * 10);
+$minutos_str = str_pad($minutos, 2, "0", STR_PAD_LEFT);
+$segundos_str = str_pad($segundos, 2, "0", STR_PAD_LEFT);
+
+$tiempo = $minutos_str . ":" . $segundos_str . "." . $decimas;
 
 $piloto1 = (string)$xml->clasificacion->piloto1;
 $piloto2 = (string)$xml->clasificacion->piloto2;

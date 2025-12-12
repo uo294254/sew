@@ -83,9 +83,9 @@ class CargadorSVG {
 
         const elementoSVG = docSVG.documentElement;
 
-        elementoSVG.setAttribute('width', '750');
-        elementoSVG.setAttribute('height', '350');
-        elementoSVG.setAttribute('viewBox', '0 0 750 350');
+        elementoSVG.setAttribute('width', '1000');
+        elementoSVG.setAttribute('height', '600');
+        elementoSVG.setAttribute('viewBox', '0 0 1000 600');
 
         this.contenedorSVG.innerHTML = "";
         this.contenedorSVG.appendChild(elementoSVG);

@@ -1,5 +1,5 @@
- /* Mario Trelles Riestra - UO294254 */
- /* Estilos generales del proyecto MotoGP-Desktop */
+/* Mario Trelles Riestra - UO294254 */
+/* Estilos generales del proyecto MotoGP-Desktop */
 
 /* especificidad: 001 */
 body {
@@ -10,8 +10,8 @@ body {
 
 /* especificidad: 001 */
 header {
+    color: #0c2d48; /* Hereda background-color de body */
     background: linear-gradient(90deg, #0c2d48 5%,  #9ABED5 100%);
-    color: #0c2d48;
 }
 
 /* especificidad: 002 */
@@ -22,13 +22,13 @@ body a {
 /* especificidad: 002 */
 nav a {
     text-decoration: none;
-    background-color: #0c2d48;
     color: #B6CFDD;
+    background-color: #0c2d48;
 }
 
 /* especificidad: 002 */
 h1 a {
-    color: #fad02c; /* Hereda background de header */
+    color: #fad02c; /* Hereda background-color de body */
     text-decoration: none;
 }
 
@@ -115,17 +115,20 @@ a[href^="http"] {
     padding: 0.1em 0.2em;
 }
 
+/* especificidad: 001 */
 img {
-    max-width: 100%;    /* La imagen nunca supera el contenedor */
-    height: auto;       /* Mantiene la proporción original */
-    display: block;     /* Evita pequeños espacios debajo de la imagen */
-    margin: 0 auto;     /* Centra la imagen si es block */
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 0.5em;
 }
 
-
+/* especificidad: 001 */
 video {
-    max-width: 20%;    /* La imagen nunca supera el contenedor */
-    height: auto;       /* Mantiene la proporción original */
-    display: block;     /* Evita pequeños espacios debajo de la imagen */
-    margin: 0 auto;     /* Centra la imagen si es block */
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 0.5em;
 }

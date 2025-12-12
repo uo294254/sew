@@ -35,7 +35,7 @@ article img {
     height: 100%;
     position: absolute;
     border-radius: 0.5em;
-    background: #1C7CCC;
+    background: #0c2d48;
     color: #fad02c;
     backface-visibility: hidden;
 }
@@ -60,8 +60,7 @@ article img {
 
     /* especificidad: 002 */
     main article {
-        width: 45vw;
-        /* Redefinición: width */
+        width: 45vw; /* Redefinición: width */
     }
 
 }

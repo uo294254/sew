@@ -18,19 +18,19 @@ class Svg(object):
         """
         Crea el elemento raíz, el espacio de nombres y la versión
         """
-        self.raiz = ET.Element('svg', xmlns="http://www.w3.org/2000/svg", version="2.0")
+        self.raiz = ET.Element('svg', xmlns="http://www.w3.org/2000/svg", version="1.1")
 
     def addRect(self, x, y, width, height, fill, strokeWidth, stroke):
         """
         Añade un elemento rect
         """
         ET.SubElement(self.raiz, 'rect',
-                      x=x,
-                      y=y,
-                      width=width,
-                      height=height,
+                      x=str(x),
+                      y=str(y),
+                      width=str(width),
+                      height=str(height),
                       fill=fill,
-                      strokeWidth=strokeWidth,
+                      **{'stroke-width': str(strokeWidth)},
                       stroke=stroke)
 
     def addCircle(self, cx, cy, r, fill):
@@ -43,38 +43,36 @@ class Svg(object):
                       r=r,
                       fill=fill)
 
-    def addLine(self, x1, y1, x2, y2, stroke, strokeWith):
+    def addLine(self, x1, y1, x2, y2, stroke, strokeWidth):
         """
         Añade un elemento line
         """
         ET.SubElement(self.raiz, 'line',
-                      x1=x1,
-                      y1=y1,
-                      x2=x2,
-                      y2=y2,
-                      stroke=stroke,
-                      strokeWith=strokeWith)
+                  x1=str(x1), y1=str(y1),
+                  x2=str(x2), y2=str(y2),
+                  stroke=stroke,
+                  **{'stroke-width': str(strokeWidth)})
 
-    def addPolyline(self, points, stroke, strokeWith, fill):
+    def addPolyline(self, points, stroke, strokeWidth, fill):
         """
         Añade un elemento polyline
         """
         ET.SubElement(self.raiz, 'polyline',
                       points=points,
                       stroke=stroke,
-                      strokeWith=strokeWith,
+                      **{'stroke-width': strokeWidth},
                       fill=fill)
 
-    def addText(self, texto, x, y, fontFamily, fontSize, style):
+    def addText(self, texto, x, y, fontSize=14, anchor="middle"):
         """
         Añade un elemento texto
         """
         ET.SubElement(self.raiz, 'text',
-                      x=x,
-                      y=y,
-                      fontFamily=fontFamily,
-                      fontSize=fontSize,
-                      style=style).text = texto
+                      x=str(x),
+                      y=str(y),
+                      **{"text-anchor": anchor,
+                         "font-size": str(fontSize)}
+                      ).text = texto
 
     def escribir(self, nombreArchivoSVG):
         """
@@ -112,27 +110,38 @@ def main():
 
     tree = ET.parse('circuitoEsquema.xml')
     root = tree.getroot()
+    ns = '{http://www.uniovi.es}'
 
-    ns = {'ns': 'http://www.uniovi.es'}
+    ancho_svg = 500
+    alto_svg = 350
+    margen = 50
+    desplazamiento_x = 50
 
     nombreSVG = "altimetria.svg"
     nuevoSVG = Svg()
+    nuevoSVG.addText("Altimetría del circuito", ancho_svg/2 + desplazamiento_x, 30, fontSize=20)
 
-    ancho_svg = 800
-    alto_svg = 400
-    margen = 50
+    nuevoSVG.addRect(
+        x=str(margen + desplazamiento_x),
+        y=str(margen),
+        width=str(ancho_svg - 2*margen),
+        height=str(alto_svg - 2*margen),
+        fill="none",
+        strokeWidth="2",
+        stroke="black"
+    )
 
-    origen = root.find(f'.//{{{ns["ns"]}}}punto_origen')
-    alt_origen = float(origen.find(f'{{{ns["ns"]}}}altitud_geo').text)
+    origen = root.find(f'.//{ns}punto_origen')
+    alt_origen = float(origen.find(f'{ns}altitud_geo').text)
 
     altitudes = [alt_origen]
     distancias = [0.0]
 
-    tramos = root.findall(f'.//{{{ns["ns"]}}}tramos/{{{ns["ns"]}}}tramo')
+    tramos = root.findall(f'.//{ns}tramos/{ns}tramo')
 
     for tramo in tramos:
-        dist = float(tramo.find(f'{{{ns["ns"]}}}distancia').text)
-        alt = float(tramo.find(f'{{{ns["ns"]}}}altitud_geo').text)
+        dist = float(tramo.find(f'{ns}distancia').text)
+        alt = float(tramo.find(f'{ns}altitud_geo').text)
         distancias.append(distancias[-1] + dist)
         altitudes.append(alt)
 
@@ -140,21 +149,60 @@ def main():
     min_alt = min(altitudes)
     max_alt = max(altitudes)
 
+    nuevoSVG.addText("Distancia (m)", ancho_svg/2 + desplazamiento_x, alto_svg - 10)
+    nuevoSVG.addText("Altitud (m)",
+                     desplazamiento_x,
+                     alto_svg/2,
+                     fontSize=14,
+                     anchor="middle")
+
+    for i in range(6):
+        x = margen + (i * (ancho_svg - 2*margen) / 5) + desplazamiento_x
+        dist_label = round(max_dist * i / 5)
+
+        nuevoSVG.addText(str(dist_label),
+                         x,
+                         alto_svg - margen + 20,
+                         fontSize=12)
+
+        nuevoSVG.addLine(x,
+                         alto_svg - margen,
+                         x,
+                         margen,
+                         stroke="lightgray",
+                         strokeWidth=1)
+
+    for i in range(6):
+        y = alto_svg - margen - (i * (alto_svg - 2*margen) / 5)
+        alt_label = round(min_alt + (max_alt - min_alt) * i / 5)
+
+        nuevoSVG.addText(str(alt_label),
+                         margen - 25 + desplazamiento_x,
+                         y + 5,
+                         fontSize=12,
+                         anchor="end")
+
+        nuevoSVG.addLine(margen + desplazamiento_x,
+                         y,
+                         ancho_svg - margen + desplazamiento_x,
+                         y,
+                         stroke="lightgray",
+                         strokeWidth=1)
+
     puntos_svg = []
-    puntos_svg.append(f"{margen},{alto_svg - margen}")
+    puntos_svg.append(f"{margen + desplazamiento_x},{alto_svg - margen}")
 
     for i in range(len(distancias)):
-        x = margen + distancias[i] / max_dist * (ancho_svg - 2*margen)
+        x = margen + distancias[i] / max_dist * (ancho_svg - 2*margen) + desplazamiento_x
         y = alto_svg - margen - (altitudes[i] - min_alt) / (max_alt - min_alt) * (alto_svg - 2*margen)
         puntos_svg.append(f"{x},{y}")
 
-    puntos_svg.append(f"{margen + (ancho_svg - 2*margen)},{alto_svg - margen}")
+    puntos_svg.append(f"{margen + (ancho_svg - 2*margen) + desplazamiento_x},{alto_svg - margen}")
     puntos_str = ' '.join(puntos_svg)
 
     nuevoSVG.addPolyline(puntos_str, 'red', '2', 'orange')
 
     nuevoSVG.ver()
-
     nuevoSVG.escribir(nombreSVG)
     print("Creado el archivo: ", nombreSVG)
 

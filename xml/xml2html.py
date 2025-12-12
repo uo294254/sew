@@ -64,26 +64,26 @@ class Html:
 def main():
     tree = ET.parse('circuitoEsquema.xml')
     root = tree.getroot()
-    ns = {'ns': 'http://www.uniovi.es'}
+    ns = '{http://www.uniovi.es}'
 
     html = Html("Información del Circuito")
 
-    nombre = root.find(f'.//{{{ns["ns"]}}}nombre').text
+    nombre = root.find(f'.//{ns}nombre').text
 
-    longitud_elem = root.find(f'.//{{{ns["ns"]}}}longitud')
+    longitud_elem = root.find(f'.//{ns}longitud')
     longitud = longitud_elem.text
     unidades_longitud = longitud_elem.get('unidades')
 
-    anchura_elem = root.find(f'.//{{{ns["ns"]}}}anchura')
+    anchura_elem = root.find(f'.//{ns}anchura')
     anchura = anchura_elem.text
     unidades_anchura = anchura_elem.get('unidades')
 
-    fecha = root.find(f'.//{{{ns["ns"]}}}fecha').text
-    hora = root.find(f'.//{{{ns["ns"]}}}hora').text
-    vueltas = root.find(f'.//{{{ns["ns"]}}}vueltas').text
-    localidad = root.find(f'.//{{{ns["ns"]}}}localidad').text
-    pais = root.find(f'.//{{{ns["ns"]}}}pais').text
-    patrocinador = root.find(f'.//{{{ns["ns"]}}}patrocinador').text
+    fecha = root.find(f'.//{ns}fecha').text
+    hora = root.find(f'.//{ns}hora').text
+    vueltas = root.find(f'.//{ns}vueltas').text
+    localidad = root.find(f'.//{ns}localidad').text
+    pais = root.find(f'.//{ns}pais').text
+    patrocinador = root.find(f'.//{ns}patrocinador').text
 
     sec_datos = html.newSection("Datos del Circuito")
     html.addListTo(sec_datos, [
@@ -98,13 +98,13 @@ def main():
         f"Patrocinador: {patrocinador}"
     ])
 
-    referencias = root.findall(f'.//{{{ns["ns"]}}}referencias/{{{ns["ns"]}}}referencia')
+    referencias = root.findall(f'.//{ns}referencias/{ns}referencia')
     if referencias:
         sec_ref = html.newSection("Referencias")
         for r in referencias:
             html.addLinkTo(sec_ref, r.text, r.text)
 
-    fotos = root.findall(f'.//{{{ns["ns"]}}}fotos/{{{ns["ns"]}}}foto')
+    fotos = root.findall(f'.//{ns}fotos/{ns}foto')
     if fotos:
         sec_fotos = html.newSection("Fotos")
         for foto in fotos:
@@ -113,26 +113,26 @@ def main():
                 foto.text if foto.text else "Foto del circuito"
             )
 
-    videos = root.findall(f'.//{{{ns["ns"]}}}videos/{{{ns["ns"]}}}video')
+    videos = root.findall(f'.//{ns}videos/{ns}video')
     if videos:
         sec_videos = html.newSection("Videos")
         for video in videos:
             html.addVideoTo(sec_videos, video.get('archivo'))
 
-    resultado = root.find(f'.//{{{ns["ns"]}}}resultado')
+    resultado = root.find(f'.//{ns}resultado')
     if resultado is not None:
         sec_result = html.newSection("Resultado")
-        vencedor = resultado.find(f'{{{ns["ns"]}}}vencedor').text
-        tiempo_iso = resultado.find(f'{{{ns["ns"]}}}tiempo').text
+        vencedor = resultado.find(f'{ns}vencedor').text
+        tiempo_iso = resultado.find(f'{ns}tiempo').text
         html.addParagraphTo(sec_result, f"Vencedor: {vencedor}")
         tiempo_formateado = html.formatear_duracion(tiempo_iso)
         html.addParagraphTo(sec_result, f"Tiempo: {tiempo_formateado}")
 
-    clasificacion = root.find(f'.//{{{ns["ns"]}}}clasificacion')
+    clasificacion = root.find(f'.//{ns}clasificacion')
     if clasificacion is not None:
-        piloto1 = clasificacion.find(f'{{{ns["ns"]}}}piloto1').text
-        piloto2 = clasificacion.find(f'{{{ns["ns"]}}}piloto2').text
-        piloto3 = clasificacion.find(f'{{{ns["ns"]}}}piloto3').text
+        piloto1 = clasificacion.find(f'{ns}piloto1').text
+        piloto2 = clasificacion.find(f'{ns}piloto2').text
+        piloto3 = clasificacion.find(f'{ns}piloto3').text
 
         sec_clas = html.newSection("Clasificación")
         html.addListTo(sec_clas, [

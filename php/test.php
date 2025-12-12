@@ -57,6 +57,10 @@ if (isset($_POST['accion'])) {
                 $errorFormulario = true;
                 $errores["pericia"] = " * Debe ser un número del 1 al 10";
             }
+            if (empty($_POST["dispositivo"])) {
+                $errorFormulario = true;
+                $errores["dispositivo"] = " * Este campo es obligatorio";
+            }
 
             for ($i = 1; $i <= 10; $i++) {
                 if (empty($_POST["pregunta$i"])) {
@@ -152,35 +156,45 @@ if (!$mostrarFormularioObservador) {
 
         <h2>Datos del participante</h2>
 
-        <p>Profesión:</p>
+        <label for='profesion'>Profesión:</label>
         <p>
-            <input type='text' name='profesion' value='" . ($_POST['profesion'] ?? '') . "'/>
+            <input type='text' id='profesion' name='profesion' 
+                value='" . ($_POST['profesion'] ?? '') . "'/>
             <span>" . $errores["profesion"] . "</span>
         </p>
 
-        <p>Edad:</p>
+        <label for='edad'>Edad:</label>
         <p>
-            <input type='number' name='edad' value='" . ($_POST['edad'] ?? '') . "'/>
+            <input type='number' id='edad' name='edad'
+                value='" . ($_POST['edad'] ?? '') . "'/>
             <span>" . $errores["edad"] . "</span>
         </p>
 
-        <p>Género:</p>
+        <label>Género:</label>
         <p>
-            <input type='radio' name='genero' value='Hombre'/>Hombre
-            <input type='radio' name='genero' value='Mujer'/>Mujer
-            <input type='radio' name='genero' value='Otros'/>Otros
-            <span>" . $errores["genero"] . "</span>             
+            <input type='radio' id='generoH' name='genero' value='Hombre' " . (isset($_POST['genero']) && $_POST['genero'] == 'Hombre' ? 'checked' : '') . "/> 
+            <label for='generoH'>Hombre</label>
+
+            <input type='radio' id='generoM' name='genero' value='Mujer' " . (isset($_POST['genero']) && $_POST['genero'] == 'Mujer' ? 'checked' : '') . "/> 
+            <label for='generoM'>Mujer</label>
+
+            <input type='radio' id='generoO' name='genero' value='Otros' " . (isset($_POST['genero']) && $_POST['genero'] == 'Otros' ? 'checked' : '') . "/> 
+            <label for='generoO'>Otros</label>
+
+            <span>" . $errores["genero"] . "</span>
         </p>
 
-        <p>Pericia informática (1-10):</p>
+        <label for='pericia'>Pericia informática (1-10):</label>
         <p>
-            <input type='number' name='pericia' min='1' max='10' value='" . ($_POST['pericia'] ?? '') . "'/>
+            <input type='number' id='pericia' name='pericia' min='1' max='10'
+                value='" . ($_POST['pericia'] ?? '') . "'/>
             <span>" . $errores["pericia"] . "</span>
         </p>
 
-        <p>Dispositivo:</p>
+        <label for='dispositivo'>Dispositivo:</label>
         <p>
-            <input type='text' name='dispositivo' value='" . ($_POST['dispositivo'] ?? '') . "'/>
+            <input type='text' id='dispositivo' name='dispositivo' 
+                value='" . ($_POST['dispositivo'] ?? '') . "'/>
             <span>" . $errores["dispositivo"] . "</span>
         </p>
 
@@ -188,116 +202,177 @@ if (!$mostrarFormularioObservador) {
             <button type='submit' name='accion' value='iniciar'>Iniciar Prueba</button>
         </p>
 
+
         <h2>Preguntas</h2>
 
-        <p>Pregunta 1: ¿En qué año nació Álex Márquez?</p>
+        <label>Pregunta 1: ¿En qué año nació Álex Márquez?</label>
         <p>
-            <input type='radio' name='pregunta1' value='1996' />1996
-            <input type='radio' name='pregunta1' value='1998' />1998
-            <input type='radio' name='pregunta1' value='1999' />1999
+            <input type='radio' id='p1_1996' name='pregunta1' value='1996' " . (isset($_POST['pregunta1']) && $_POST['pregunta1'] == '1996' ? 'checked' : '') . "/>
+            <label for='p1_1996'>1996</label>
+
+            <input type='radio' id='p1_1998' name='pregunta1' value='1998' " . (isset($_POST['pregunta1']) && $_POST['pregunta1'] == '1998' ? 'checked' : '') . "/>
+            <label for='p1_1998'>1998</label>
+
+            <input type='radio' id='p1_1999' name='pregunta1' value='1999' " . (isset($_POST['pregunta1']) && $_POST['pregunta1'] == '1999' ? 'checked' : '') . "/>
+            <label for='p1_1999'>1999</label>
+
             <span>" . $errores["pregunta1"] . "</span>
         </p>
 
-        <p>Pregunta 2: ¿Cuántos metros de longitud tiene el Circuito de Jerez?</p>
+        <label>Pregunta 2: ¿Cuántos metros tiene el Circuito de Jerez?</label>
         <p>
-            <input type='radio' name='pregunta2' value='4423' />4,423 metros
-            <input type='radio' name='pregunta2' value='4657' />4,657 metros
-            <input type='radio' name='pregunta2' value='5100' />5,100 metros
+            <input type='radio' id='p2_4423' name='pregunta2' value='4423' " . (isset($_POST['pregunta2']) && $_POST['pregunta2'] == '4423' ? 'checked' : '') . "/>
+            <label for='p2_4423'>4423 metros</label>
+
+            <input type='radio' id='p2_4657' name='pregunta2' value='4657' " . (isset($_POST['pregunta2']) && $_POST['pregunta2'] == '4657' ? 'checked' : '') . "/>
+            <label for='p2_4657'>4657 metros</label>
+
+            <input type='radio' id='p2_5100' name='pregunta2' value='5100' " . (isset($_POST['pregunta2']) && $_POST['pregunta2'] == '5100' ? 'checked' : '') . "/>
+            <label for='p2_5100'>5100 metros</label>
+
             <span>" . $errores["pregunta2"] . "</span>
         </p>
 
-        <p>Pregunta 3: ¿Qué temperatura había el día de la carrera a las 14:00?</p>
+        <label>Pregunta 3: ¿Qué sensación térmica había a las 14:00 el día de la carrera?</label>
         <p>
-            <input type='radio' name='pregunta3' value='20' />20°C
-            <input type='radio' name='pregunta3' value='25' />25°C
-            <input type='radio' name='pregunta3' value='30' />30°C
+            <input type='radio' id='p3_20' name='pregunta3' value='20' " . (isset($_POST['pregunta3']) && $_POST['pregunta3'] == '20' ? 'checked' : '') . "/>
+            <label for='p3_20'>20°C</label>
+
+            <input type='radio' id='p3_25' name='pregunta3' value='25' " . (isset($_POST['pregunta3']) && $_POST['pregunta3'] == '25' ? 'checked' : '') . "/>
+            <label for='p3_25'>25°C</label>
+
+            <input type='radio' id='p3_30' name='pregunta3' value='30' " . (isset($_POST['pregunta3']) && $_POST['pregunta3'] == '30' ? 'checked' : '') . "/>
+            <label for='p3_30'>30°C</label>
+
             <span>" . $errores["pregunta3"] . "</span>
         </p>
 
-        <p>Pregunta 4: ¿Quién está en la primera posición de la clasificación general?</p>
+        <label>Pregunta 4: ¿Quién va primero en la clasificación del mundial?</label>
         <p>
-            <input type='radio' name='pregunta4' value='Marc Márquez' />Marc Márquez
-            <input type='radio' name='pregunta4' value='Jorge Martín' />Jorge Martín
-            <input type='radio' name='pregunta4' value='Pecco Bagnaia' />Pecco Bagnaia
+            <input type='radio' id='p4_mm' name='pregunta4' value='Marc Márquez' " . (isset($_POST['pregunta4']) && $_POST['pregunta4'] == 'Marc Márquez' ? 'checked' : '') . "/>
+            <label for='p4_mm'>Marc Márquez</label>
+
+            <input type='radio' id='p4_jm' name='pregunta4' value='Jorge Martín' " . (isset($_POST['pregunta4']) && $_POST['pregunta4'] == 'Jorge Martín' ? 'checked' : '') . "/>
+            <label for='p4_jm'>Jorge Martín</label>
+
+            <input type='radio' id='p4_pb' name='pregunta4' value='Pecco Bagnaia' " . (isset($_POST['pregunta4']) && $_POST['pregunta4'] == 'Pecco Bagnaia' ? 'checked' : '') . "/>
+            <label for='p4_pb'>Pecco Bagnaia</label>
+
             <span>" . $errores["pregunta4"] . "</span>
         </p>
 
-        <p>Pregunta 5: ¿Cuántas secciones principales tiene el menú de navegación?</p>
+        <label>Pregunta 5: ¿De que va el juego de cartas de MotoGP-Desktop?</label>
         <p>
-            <input type='radio' name='pregunta5' value='5' />5
-            <input type='radio' name='pregunta5' value='6' />6
-            <input type='radio' name='pregunta5' value='7' />7
+            <input type='radio' id='p5_5' name='pregunta5' value='Estrategia' " . (isset($_POST['pregunta5']) && $_POST['pregunta5'] == 'Estrategia' ? 'checked' : '') . "/>
+            <label for='p5_5'>De estrategia</label>
+
+            <input type='radio' id='p5_6' name='pregunta5' value='Memoria' " . (isset($_POST['pregunta5']) && $_POST['pregunta5'] == 'Memoria' ? 'checked' : '') . "/>
+            <label for='p5_6'>De memoria</label>
+
+            <input type='radio' id='p5_7' name='pregunta5' value='Rol' " . (isset($_POST['pregunta5']) && $_POST['pregunta5'] == 'Rol' ? 'checked' : '') . "/>
+            <label for='p5_7'>De rol</label>
+
             <span>" . $errores["pregunta5"] . "</span>
         </p>
 
-        <p>Pregunta 6: ¿En qué equipo está Álex Márquez actualmente?</p>
+        <label>Pregunta 6: ¿En qué equipo está Álex Márquez?</label>
         <p>
-            <input type='radio' name='pregunta6' value='Gresini Racing Ducati' />Gresini Racing Ducati
-            <input type='radio' name='pregunta6' value='Pramac Racing' />Pramac Racing
-            <input type='radio' name='pregunta6' value='Honda LCR' />Honda LCR
+            <input type='radio' id='p6_gresini' name='pregunta6' value='Gresini Racing Ducati' " . (isset($_POST['pregunta6']) && $_POST['pregunta6'] == 'Gresini Racing Ducati' ? 'checked' : '') . "/>
+            <label for='p6_gresini'>Gresini Racing Ducati</label>
+
+            <input type='radio' id='p6_pramac' name='pregunta6' value='Aprilia Racing' " . (isset($_POST['pregunta6']) && $_POST['pregunta6'] == 'Aprilia Racing' ? 'checked' : '') . "/>
+            <label for='p6_pramac'>Aprilia Racing</label>
+
+            <input type='radio' id='p6_lcr' name='pregunta6' value='Monster Energy Yamaha' " . (isset($_POST['pregunta6']) && $_POST['pregunta6'] == 'Monster Energy Yamaha' ? 'checked' : '') . "/>
+            <label for='p6_lcr'>Monster Energy Yamaha</label>
+
             <span>" . $errores["pregunta6"] . "</span>
         </p>
 
-        <p>Pregunta 7: ¿Qué es la chicane?</p>
+        <label>Pregunta 7: ¿Qué es la chicane?</label>
         <p>
-            <input type='radio' name='pregunta7' value='Serie de curvas pronunciadas' />Serie de curvas pronunciadas
-            <input type='radio' name='pregunta7' value='Recta de boxes' />Recta de boxes
-            <input type='radio' name='pregunta7' value='Zona de adelantamiento' />Zona de adelantamiento
+            <input type='radio' id='p7_curvas' name='pregunta7' value='Serie de curvas pronunciadas' " . (isset($_POST['pregunta7']) && $_POST['pregunta7'] == 'Serie de curvas pronunciadas' ? 'checked' : '') . "/>
+            <label for='p7_curvas'>Serie de curvas pronunciadas</label>
+
+            <input type='radio' id='p7_recta' name='pregunta7' value='Recta de boxes' " . (isset($_POST['pregunta7']) && $_POST['pregunta7'] == 'Recta de boxes' ? 'checked' : '') . "/>
+            <label for='p7_recta'>Recta de boxes</label>
+
+            <input type='radio' id='p7_adel' name='pregunta7' value='Zona de adelantamiento' " . (isset($_POST['pregunta7']) && $_POST['pregunta7'] == 'Zona de adelantamiento' ? 'checked' : '') . "/>
+            <label for='p7_adel'>Zona de adelantamiento</label>
+
             <span>" . $errores["pregunta7"] . "</span>
         </p>
 
-        <p>Pregunta 8: ¿Cuántos podios ha obtenido Álex Márquez?</p>
+        <label>Pregunta 8: ¿Cuántos podios tiene Álex Márquez?</label>
         <p>
-            <input type='radio' name='pregunta8' value='1' />1
-            <input type='radio' name='pregunta8' value='3' />3
-            <input type='radio' name='pregunta8' value='5' />5
+            <input type='radio' id='p8_1' name='pregunta8' value='1' " . (isset($_POST['pregunta8']) && $_POST['pregunta8'] == '1' ? 'checked' : '') . "/>
+            <label for='p8_1'>1</label>
+
+            <input type='radio' id='p8_3' name='pregunta8' value='3' " . (isset($_POST['pregunta8']) && $_POST['pregunta8'] == '3' ? 'checked' : '') . "/>
+            <label for='p8_3'>3</label>
+
+            <input type='radio' id='p8_5' name='pregunta8' value='5' " . (isset($_POST['pregunta8']) && $_POST['pregunta8'] == '5' ? 'checked' : '') . "/>
+            <label for='p8_5'>5</label>
+
             <span>" . $errores["pregunta8"] . "</span>
         </p>
 
-        <p>Pregunta 9: ¿Llovió durante los entrenamientos?</p>
+        <label>Pregunta 9: ¿Llovió durante los entrenamientos?</label>
         <p>
-            <input type='radio' name='pregunta9' value='Sí' />Sí
-            <input type='radio' name='pregunta9' value='No' />No
-            <input type='radio' name='pregunta9' value='Solo en clasificación' />Solo en clasificación
+            <input type='radio' id='p9_si' name='pregunta9' value='Sí' " . (isset($_POST['pregunta9']) && $_POST['pregunta9'] == 'Sí' ? 'checked' : '') . "/>
+            <label for='p9_si'>Si</label>
+
+            <input type='radio' id='p9_no' name='pregunta9' value='No' " . (isset($_POST['pregunta9']) && $_POST['pregunta9'] == 'No' ? 'checked' : '') . "/>
+            <label for='p9_no'>No</label>
+
+            <input type='radio' id='p9_sc' name='pregunta9' value='Durante una hora' " . (isset($_POST['pregunta9']) && $_POST['pregunta9'] == 'Durante una hora' ? 'checked' : '') . "/>
+            <label for='p9_sc'>Durante una hora</label>
+
             <span>" . $errores["pregunta9"] . "</span>
         </p>
 
-        <p>Pregunta 10: ¿Quién es el patrocinador principal del circuito?</p>
+        <label>Pregunta 10: ¿Quién es el patrocinador principal del circuito de Jerez?</label>
         <p>
-            <input type='radio' name='pregunta10' value='Estrella Galicia' />Estrella Galicia
-            <input type='radio' name='pregunta10' value='Red Bull' />Red Bull
-            <input type='radio' name='pregunta10' value='Monster Energy' />Monster Energy
+            <input type='radio' id='p10_eg' name='pregunta10' value='Estrella Galicia' " . (isset($_POST['pregunta10']) && $_POST['pregunta10'] == 'Estrella Galicia' ? 'checked' : '') . "/>
+            <label for='p10_eg'>Estrella Galicia</label>
+
+            <input type='radio' id='p10_rb' name='pregunta10' value='Red Bull' " . (isset($_POST['pregunta10']) && $_POST['pregunta10'] == 'Red Bull' ? 'checked' : '') . "/>
+            <label for='p10_rb'>Red Bull</label>
+
+            <input type='radio' id='p10_me' name='pregunta10' value='Monster Energy' " . (isset($_POST['pregunta10']) && $_POST['pregunta10'] == 'Monster Energy' ? 'checked' : '') . "/>
+            <label for='p10_me'>Monster Energy</label>
+
             <span>" . $errores["pregunta10"] . "</span>
         </p>
 
+
         <h2>Evaluación de la aplicación</h2>
 
-        <p>Comentarios sobre la aplicación (opcional):</p>
+        <label for='comentarios'>Comentarios (opcional):</label>
         <p>
-            <textarea name='comentarios' rows='4' cols='50'>" . ($_POST['comentarios'] ?? '') . "</textarea>
+            <textarea id='comentarios' name='comentarios' rows='4' cols='50'>" . ($_POST['comentarios'] ?? '') . "</textarea>
             <span>" . $errores["comentarios"] . "</span>
         </p>
 
-        <p>Propuestas de mejora (opcional):</p>
+        <label for='mejoras'>Propuestas de mejora (opcional):</label>
         <p>
-            <textarea name='mejoras' rows='4' cols='50'>" . ($_POST['mejoras'] ?? '') . "</textarea>
+            <textarea id='mejoras' name='mejoras' rows='4' cols='50'>" . ($_POST['mejoras'] ?? '') . "</textarea>
             <span>" . $errores["mejoras"] . "</span>
         </p>
 
-        <p>Valoración de la aplicación (0-10):</p>
+        <label for='valoracion'>Valoración (0-10):</label>
         <p>
-            <input type='number' name='valoracion' min='0' max='10' value='" . ($_POST['valoracion'] ?? '') . "'/>
+            <input type='number' id='valoracion' name='valoracion' min='0' max='10'
+                value='" . ($_POST['valoracion'] ?? '') . "'/>
             <span>" . $errores["valoracion"] . "</span>
         </p>
 
         <p>
             <button type='submit' name='accion' value='terminar'>Terminar Prueba</button>
-        </p>      
+        </p>
     </form>
-
     </body>
-    </html>
-    ";
+    </html>";
 } else {
     echo "
     <!DOCTYPE html>

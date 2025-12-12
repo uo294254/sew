@@ -51,16 +51,15 @@ class Kml(object):
 def main():
     tree = ET.parse('circuitoEsquema.xml')
     root = tree.getroot()
-
-    ns = {'ns': 'http://www.uniovi.es'}
+    ns = '{http://www.uniovi.es}'
 
     nuevoKML = Kml()
 
 
-    origen = root.find(f'.//{{{ns["ns"]}}}punto_origen')
-    long_origen = float(origen.find(f'{{{ns["ns"]}}}longitud_geo').text)
-    lat_origen = float(origen.find(f'{{{ns["ns"]}}}latitud_geo').text)
-    alt_origen = float(origen.find(f'{{{ns["ns"]}}}altitud_geo').text)
+    origen = root.find(f'.//{ns}punto_origen')
+    long_origen = float(origen.find(f'{ns}longitud_geo').text)
+    lat_origen = float(origen.find(f'{ns}latitud_geo').text)
+    alt_origen = float(origen.find(f'{ns}altitud_geo').text)
 
     nuevoKML.addPlacemark('Punto Origen',
                           'Origen del circuito',
@@ -70,23 +69,12 @@ def main():
     coordenadas = []
     coordenadas.append(f'{long_origen},{lat_origen},{alt_origen}')
 
-    tramos = root.findall(f'.//{{{ns["ns"]}}}tramos/{{{ns["ns"]}}}tramo')
-
-    cont = 1
+    tramos = root.findall(f'.//{ns}tramos/{ns}tramo')
     for tramo in tramos:
-        lon = float(tramo.find(f'{{{ns["ns"]}}}longitud_geo').text)
-        lat = float(tramo.find(f'{{{ns["ns"]}}}latitud_geo').text)
-        alt = float(tramo.find(f'{{{ns["ns"]}}}altitud_geo').text)
-
+        lon = float(tramo.find(f'{ns}longitud_geo').text)
+        lat = float(tramo.find(f'{ns}latitud_geo').text)
+        alt = float(tramo.find(f'{ns}altitud_geo').text)
         coordenadas.append(f'{lon},{lat},{alt}')
-
-        distancia = tramo.find(f'{{{ns["ns"]}}}distancia').text
-
-        nuevoKML.addPlacemark(f"Tramo{cont}",
-                              f"Distancia de tramo: {distancia}m",
-                              lon, lat, alt,
-                              'relativeToGround')
-        cont += 1
 
     coordenadas.append(f'{long_origen},{lat_origen},{alt_origen}')
 
