@@ -32,8 +32,8 @@ class Carrusel {
             },
             method: 'GET',
             success: (datos) => {
-                this.procesarJSONFotografias(datos);
-                this.mostrarFotografias();
+                this.#procesarJSONFotografias(datos);
+                this.#mostrarFotografias();
             },
             error: () => {
                 $("article h2").html("¡Tenemos problemas! No puedo obtener JSON de <a href='https://www.flickr.com/'>Flickr</a>");
@@ -41,7 +41,7 @@ class Carrusel {
         });
     }
 
-    procesarJSONFotografias(datos) {
+    #procesarJSONFotografias(datos) {
         this.#fotos = datos.items.slice(0, this.#maximo).map(item => {
             const url640 = item.media.m.replace("_m.jpg", "_z.jpg");
             return {
@@ -52,16 +52,16 @@ class Carrusel {
         });
     }
 
-    mostrarFotografias() {
+    #mostrarFotografias() {
         if (this.#fotos.length === 0) return;
 
         this.$contenedor = $("article h2");
 
-        this.cambiarFotografia();
-        setInterval(this.cambiarFotografia.bind(this), 3000);
+        this.#cambiarFotografia();
+        setInterval(this.#cambiarFotografia.bind(this), 3000);
     }
 
-    cambiarFotografia() {
+    #cambiarFotografia() {
         const foto = this.#fotos[this.#actual];
         
         $("article h2 ~ img").remove();

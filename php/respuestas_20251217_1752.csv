@@ -1,0 +1,14 @@
+﻿id_usuario,profesion,edad,genero,nivel,dispositivo,tiempo,completado,comentarios,mejoras,valoracion,obs_facilitador
+1,Estudiante,23,Hombre,10,Tablet,04:52:00,1,"Muy buena","Mejores tablets",10,"Usuario agil, estaria bien tener mejores tablets para las pruebas"
+
+id_respuesta,id_test,pregunta,respuesta
+1,1,"Pregunta 1",1996
+2,1,"Pregunta 2",4423
+3,1,"Pregunta 3",30
+4,1,"Pregunta 4","Marc Márquez"
+5,1,"Pregunta 5",Memoria
+6,1,"Pregunta 6","Gresini Racing Ducati"
+7,1,"Pregunta 7","Serie de curvas pronunciadas"
+8,1,"Pregunta 8",1
+9,1,"Pregunta 9",No
+10,1,"Pregunta 10","Estrella Galicia"

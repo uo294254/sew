@@ -1,14 +1,22 @@
 /* Mario Trelles Riestra - UO294254 */
 /* Estilos de layout del proyecto MotoGP-Desktop para juego de memoria */
 
-/* main → Especificidad = 001 */
+/* advertencia linea 0: redefinición column-gap se produce en la línea 29 */
+/* advertencia linea 0: redefinición row-gap se produce en la línea 29 */
+/* advertencia linea 0: redefinición grid-row-start se produce en la línea 35 */
+/* advertencia linea 0: redefinición grid-row-end se produce en la línea 35 */
+/* advertencia linea 0: redefinición grid-row-start se produce en la línea 35 */
+/* advertencia linea 0: redefinición grid-row-end se produce en la línea 35 */
+
+/* especificidad: 001 */
 main {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 2em;
 }
 
-/* main h2, main p → Especificidad = 002 */
+/* especificidad: 002 */
+/* especificidad: 002 */
 main h2, main p {
     grid-column: 1 / 5;
     text-align: center;
@@ -17,13 +25,14 @@ main h2, main p {
 
 @media (min-width: 320px) and (max-width: 799px) {
 
-    /* main → Especificidad = 001 */
+    /* especificidad: 001 */
     main {
         grid-template-columns: repeat(2, 1fr); /* Redefinición: grid-template-columns */
-        gap: 0.5em; /* Redefinición: gap */
+        gap: 0.5em; /* redefinición de column-gap y row-gap */
     }
 
-    /* main h2, main p → Especificidad = 002 */
+    /* especificidad: 002 */
+    /* especificidad: 002 */
     main h2, main p {
         grid-column: 1 / 3; /* Redefinición: grid-column */
     }
