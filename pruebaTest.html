@@ -1,231 +1,232 @@
+<!DOCTYPE html>
 <html lang="es"><head>
-        <meta charset="UTF-8">
-        <meta name="author" content="Mario Trelles">
-        <meta name="description" content="Test de Usabilidad MotoGP-Desktop">
-        <meta name="keywords" content="MotoGP, Test">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="author" content="Mario Trelles">
+    <meta name="description" content="Test de Usabilidad MotoGP-Desktop">
+    <meta name="keywords" content="MotoGP, Test">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MotoGP - Test de Usabilidad</title>
+    <link rel="stylesheet" href="../estilo/estilo.css">
+    <link rel="stylesheet" href="../estilo/layout.css">
+</head>
+<body>
 
-        <title>MotoGP - Test de Usabilidad</title>
-        <link rel="stylesheet" href="../estilo/estilo.css">
-        <link rel="stylesheet" href="../estilo/layout.css">
-    </head>
-    <body>
+<h1>Test de Usabilidad</h1>
 
-    <h1>Test de Usabilidad</h1>
+<form action="#" method="post" name="formulario">
 
-    <form action="#" method="post" name="formulario">
+    <h2>Datos del participante</h2>
 
-        <h2>Datos del participante</h2>
+    <fieldset>
+        <legend>Profesión:</legend>
+        <input type="text" id="profesion" name="profesion" value="">
+        <span></span>
+    </fieldset>
 
-        <label for="profesion">Profesión:</label>
-        <p>
-            <input type="text" id="profesion" name="profesion" value="">
-            <span></span>
-        </p>
+    <fieldset>
+        <legend>Edad:</legend>
+        <input type="number" id="edad" name="edad" value="">
+        <span></span>
+    </fieldset>
 
-        <label for="edad">Edad:</label>
-        <p>
-            <input type="number" id="edad" name="edad" value="">
-            <span></span>
-        </p>
+    <fieldset>
+        <legend>Género:</legend>
+        <input type="radio" id="generoH" name="genero" value="Hombre"> 
+        <label for="generoH">Hombre</label>
 
-        <label>Género:</label>
-        <p>
-            <input type="radio" id="generoH" name="genero" value="Hombre"> 
-            <label for="generoH">Hombre</label>
+        <input type="radio" id="generoM" name="genero" value="Mujer"> 
+        <label for="generoM">Mujer</label>
 
-            <input type="radio" id="generoM" name="genero" value="Mujer"> 
-            <label for="generoM">Mujer</label>
+        <input type="radio" id="generoO" name="genero" value="Otros"> 
+        <label for="generoO">Otros</label>
 
-            <input type="radio" id="generoO" name="genero" value="Otros"> 
-            <label for="generoO">Otros</label>
+        <span></span>
+    </fieldset>
 
-            <span></span>
-        </p>
+    <fieldset>
+        <legend>Pericia informática (1-10):</legend>
+        <input type="number" id="pericia" name="pericia" min="1" max="10" value="">
+        <span></span>
+    </fieldset>
 
-        <label for="pericia">Pericia informática (1-10):</label>
-        <p>
-            <input type="number" id="pericia" name="pericia" min="1" max="10" value="">
-            <span></span>
-        </p>
+    <fieldset>
+        <legend>Dispositivo:</legend>
+        <input type="text" id="dispositivo" name="dispositivo" value="">
+        <span></span>
+    </fieldset>
 
-        <label for="dispositivo">Dispositivo:</label>
-        <p>
-            <input type="text" id="dispositivo" name="dispositivo" value="">
-            <span></span>
-        </p>
+    <p>Pulsar en 'Iniciar la prueba' antes de comenzar el test</p>    <p>
+        <button type="submit" name="accion" value="iniciar">Iniciar Prueba</button>
+    </p>
 
-        <p>
-            <button type="submit" name="accion" value="iniciar">Iniciar Prueba</button>
-        </p>
+    <h2>Preguntas</h2>
+
+    <fieldset>
+        <legend>Pregunta 1: ¿En qué año nació Álex Márquez?</legend>
+        <input type="radio" id="p1_1996" name="pregunta1" value="1996">
+        <label for="p1_1996">1996</label>
+
+        <input type="radio" id="p1_1998" name="pregunta1" value="1998">
+        <label for="p1_1998">1998</label>
+
+        <input type="radio" id="p1_1999" name="pregunta1" value="1999">
+        <label for="p1_1999">1999</label>
+
+        <span></span>
+    </fieldset>
+
+    <fieldset>
+        <legend>Pregunta 2: ¿Cuántos metros tiene el Circuito de Jerez?</legend>
+        <input type="radio" id="p2_4423" name="pregunta2" value="4423">
+        <label for="p2_4423">4423 metros</label>
+
+        <input type="radio" id="p2_4657" name="pregunta2" value="4657">
+        <label for="p2_4657">4657 metros</label>
+
+        <input type="radio" id="p2_5100" name="pregunta2" value="5100">
+        <label for="p2_5100">5100 metros</label>
+
+        <span></span>
+    </fieldset>
+
+    <fieldset>
+        <legend>Pregunta 3: ¿Qué sensación térmica había a las 14:00 el día de la carrera?</legend>
+        <input type="radio" id="p3_20" name="pregunta3" value="20">
+        <label for="p3_20">20°C</label>
+
+        <input type="radio" id="p3_25" name="pregunta3" value="25">
+        <label for="p3_25">25°C</label>
+
+        <input type="radio" id="p3_30" name="pregunta3" value="30">
+        <label for="p3_30">30°C</label>
+
+        <span></span>
+    </fieldset>
+
+    <fieldset>
+        <legend>Pregunta 4: ¿Quién va primero en la clasificación del mundial?</legend>
+        <input type="radio" id="p4_mm" name="pregunta4" value="Marc Márquez">
+        <label for="p4_mm">Marc Márquez</label>
+
+        <input type="radio" id="p4_jm" name="pregunta4" value="Jorge Martín">
+        <label for="p4_jm">Jorge Martín</label>
+
+        <input type="radio" id="p4_pb" name="pregunta4" value="Pecco Bagnaia">
+        <label for="p4_pb">Pecco Bagnaia</label>
+
+        <span></span>
+    </fieldset>
+
+    <fieldset>
+        <legend>Pregunta 5: ¿De que va el juego de cartas de MotoGP-Desktop?</legend>
+        <input type="radio" id="p5_5" name="pregunta5" value="Estrategia">
+        <label for="p5_5">De estrategia</label>
+
+        <input type="radio" id="p5_6" name="pregunta5" value="Memoria">
+        <label for="p5_6">De memoria</label>
+
+        <input type="radio" id="p5_7" name="pregunta5" value="Rol">
+        <label for="p5_7">De rol</label>
+
+        <span></span>
+    </fieldset>
+
+    <fieldset>
+        <legend>Pregunta 6: ¿En qué equipo está Álex Márquez actualmente?</legend>
+        <input type="radio" id="p6_pramac" name="pregunta6" value="Aprilia Racing">
+        <label for="p6_pramac">Aprilia Racing</label>
+
+        <input type="radio" id="p6_lcr" name="pregunta6" value="Monster Energy Yamaha">
+        <label for="p6_lcr">Monster Energy Yamaha</label>
+
+        <input type="radio" id="p6_gresini" name="pregunta6" value="Gresini Racing Ducati">
+        <label for="p6_gresini">Gresini Racing Ducati</label>
+
+        <span></span>
+    </fieldset>
+
+    <fieldset>
+        <legend>Pregunta 7: ¿Qué es la chicane?</legend>
+        <input type="radio" id="p7_curvas" name="pregunta7" value="Serie de curvas pronunciadas">
+        <label for="p7_curvas">Serie de curvas pronunciadas</label>
+
+        <input type="radio" id="p7_recta" name="pregunta7" value="Recta de boxes">
+        <label for="p7_recta">Recta de boxes</label>
+
+        <input type="radio" id="p7_adel" name="pregunta7" value="Zona de adelantamiento">
+        <label for="p7_adel">Zona de adelantamiento</label>
+
+        <span></span>
+    </fieldset>
+
+    <fieldset>
+        <legend>Pregunta 8: ¿Cuántos podios tiene Álex Márquez esta temporada?</legend>
+        <input type="radio" id="p8_1" name="pregunta8" value="1">
+        <label for="p8_1">1</label>
+
+        <input type="radio" id="p8_3" name="pregunta8" value="3">
+        <label for="p8_3">3</label>
+
+        <input type="radio" id="p8_5" name="pregunta8" value="5">
+        <label for="p8_5">5</label>
+
+        <span></span>
+    </fieldset>
+
+    <fieldset>
+        <legend>Pregunta 9: ¿Llovió durante los entrenamientos?</legend>
+        <input type="radio" id="p9_si" name="pregunta9" value="Sí">
+        <label for="p9_si">Si</label>
+
+        <input type="radio" id="p9_no" name="pregunta9" value="No">
+        <label for="p9_no">No</label>
+
+        <input type="radio" id="p9_sc" name="pregunta9" value="Durante una hora">
+        <label for="p9_sc">Durante una hora</label>
+
+        <span></span>
+    </fieldset>
+
+    <fieldset>
+        <legend>Pregunta 10: ¿Quién es el patrocinador principal del circuito de Jerez?</legend>
+        <input type="radio" id="p10_eg" name="pregunta10" value="Estrella Galicia">
+        <label for="p10_eg">Estrella Galicia</label>
+
+        <input type="radio" id="p10_rb" name="pregunta10" value="Red Bull">
+        <label for="p10_rb">Red Bull</label>
+
+        <input type="radio" id="p10_me" name="pregunta10" value="Monster Energy">
+        <label for="p10_me">Monster Energy</label>
+
+        <span></span>
+    </fieldset>
+
+    <h2>Evaluación de la aplicación</h2>
+
+    <fieldset>
+        <legend>Comentarios (opcional):</legend>
+        <textarea id="comentarios" name="comentarios" rows="4" cols="50"></textarea>
+        <span></span>
+    </fieldset>
+
+    <fieldset>
+        <legend>Propuestas de mejora (opcional):</legend>
+        <textarea id="mejoras" name="mejoras" rows="4" cols="50"></textarea>
+        <span></span>
+    </fieldset>
+
+    <fieldset>
+        <legend>Valoración (0-10):</legend>
+        <input type="number" id="valoracion" name="valoracion" min="0" max="10" value="">
+        <span></span>
+    </fieldset>
+
+    <p>
+        <button type="submit" name="accion" value="terminar">Terminar Prueba</button>
+    </p>
+</form>
 
 
-        <h2>Preguntas</h2>
-
-        <label>Pregunta 1: ¿En qué año nació Álex Márquez?</label>
-        <p>
-            <input type="radio" id="p1_1996" name="pregunta1" value="1996">
-            <label for="p1_1996">1996</label>
-
-            <input type="radio" id="p1_1998" name="pregunta1" value="1998">
-            <label for="p1_1998">1998</label>
-
-            <input type="radio" id="p1_1999" name="pregunta1" value="1999">
-            <label for="p1_1999">1999</label>
-
-            <span></span>
-        </p>
-
-        <label>Pregunta 2: ¿Cuántos metros tiene el Circuito de Jerez?</label>
-        <p>
-            <input type="radio" id="p2_4423" name="pregunta2" value="4423">
-            <label for="p2_4423">4423 metros</label>
-
-            <input type="radio" id="p2_4657" name="pregunta2" value="4657">
-            <label for="p2_4657">4657 metros</label>
-
-            <input type="radio" id="p2_5100" name="pregunta2" value="5100">
-            <label for="p2_5100">5100 metros</label>
-
-            <span></span>
-        </p>
-
-        <label>Pregunta 3: ¿Qué sensación térmica había a las 14:00 el día de la carrera?</label>
-        <p>
-            <input type="radio" id="p3_20" name="pregunta3" value="20">
-            <label for="p3_20">20°C</label>
-
-            <input type="radio" id="p3_25" name="pregunta3" value="25">
-            <label for="p3_25">25°C</label>
-
-            <input type="radio" id="p3_30" name="pregunta3" value="30">
-            <label for="p3_30">30°C</label>
-
-            <span></span>
-        </p>
-
-        <label>Pregunta 4: ¿Quién va primero en la clasificación del mundial?</label>
-        <p>
-            <input type="radio" id="p4_mm" name="pregunta4" value="Marc Márquez">
-            <label for="p4_mm">Marc Márquez</label>
-
-            <input type="radio" id="p4_jm" name="pregunta4" value="Jorge Martín">
-            <label for="p4_jm">Jorge Martín</label>
-
-            <input type="radio" id="p4_pb" name="pregunta4" value="Pecco Bagnaia">
-            <label for="p4_pb">Pecco Bagnaia</label>
-
-            <span></span>
-        </p>
-
-        <label>Pregunta 5: ¿De que va el juego de cartas de MotoGP-Desktop?</label>
-        <p>
-            <input type="radio" id="p5_5" name="pregunta5" value="Estrategia">
-            <label for="p5_5">De estrategia</label>
-
-            <input type="radio" id="p5_6" name="pregunta5" value="Memoria">
-            <label for="p5_6">De memoria</label>
-
-            <input type="radio" id="p5_7" name="pregunta5" value="Rol">
-            <label for="p5_7">De rol</label>
-
-            <span></span>
-        </p>
-
-        <label>Pregunta 6: ¿En qué equipo está Álex Márquez?</label>
-        <p>
-            <input type="radio" id="p6_gresini" name="pregunta6" value="Gresini Racing Ducati">
-            <label for="p6_gresini">Gresini Racing Ducati</label>
-
-            <input type="radio" id="p6_pramac" name="pregunta6" value="Aprilia Racing">
-            <label for="p6_pramac">Aprilia Racing</label>
-
-            <input type="radio" id="p6_lcr" name="pregunta6" value="Monster Energy Yamaha">
-            <label for="p6_lcr">Monster Energy Yamaha</label>
-
-            <span></span>
-        </p>
-
-        <label>Pregunta 7: ¿Qué es la chicane?</label>
-        <p>
-            <input type="radio" id="p7_curvas" name="pregunta7" value="Serie de curvas pronunciadas">
-            <label for="p7_curvas">Serie de curvas pronunciadas</label>
-
-            <input type="radio" id="p7_recta" name="pregunta7" value="Recta de boxes">
-            <label for="p7_recta">Recta de boxes</label>
-
-            <input type="radio" id="p7_adel" name="pregunta7" value="Zona de adelantamiento">
-            <label for="p7_adel">Zona de adelantamiento</label>
-
-            <span></span>
-        </p>
-
-        <label>Pregunta 8: ¿Cuántos podios tiene Álex Márquez?</label>
-        <p>
-            <input type="radio" id="p8_1" name="pregunta8" value="1">
-            <label for="p8_1">1</label>
-
-            <input type="radio" id="p8_3" name="pregunta8" value="3">
-            <label for="p8_3">3</label>
-
-            <input type="radio" id="p8_5" name="pregunta8" value="5">
-            <label for="p8_5">5</label>
-
-            <span></span>
-        </p>
-
-        <label>Pregunta 9: ¿Llovió durante los entrenamientos?</label>
-        <p>
-            <input type="radio" id="p9_si" name="pregunta9" value="Sí">
-            <label for="p9_si">Si</label>
-
-            <input type="radio" id="p9_no" name="pregunta9" value="No">
-            <label for="p9_no">No</label>
-
-            <input type="radio" id="p9_sc" name="pregunta9" value="Durante una hora">
-            <label for="p9_sc">Durante una hora</label>
-
-            <span></span>
-        </p>
-
-        <label>Pregunta 10: ¿Quién es el patrocinador principal del circuito de Jerez?</label>
-        <p>
-            <input type="radio" id="p10_eg" name="pregunta10" value="Estrella Galicia">
-            <label for="p10_eg">Estrella Galicia</label>
-
-            <input type="radio" id="p10_rb" name="pregunta10" value="Red Bull">
-            <label for="p10_rb">Red Bull</label>
-
-            <input type="radio" id="p10_me" name="pregunta10" value="Monster Energy">
-            <label for="p10_me">Monster Energy</label>
-
-            <span></span>
-        </p>
 
 
-        <h2>Evaluación de la aplicación</h2>
-
-        <label for="comentarios">Comentarios (opcional):</label>
-        <p>
-            <textarea id="comentarios" name="comentarios" rows="4" cols="50"></textarea>
-            <span></span>
-        </p>
-
-        <label for="mejoras">Propuestas de mejora (opcional):</label>
-        <p>
-            <textarea id="mejoras" name="mejoras" rows="4" cols="50"></textarea>
-            <span></span>
-        </p>
-
-        <label for="valoracion">Valoración (0-10):</label>
-        <p>
-            <input type="number" id="valoracion" name="valoracion" min="0" max="10" value="">
-            <span></span>
-        </p>
-
-        <p>
-            <button type="submit" name="accion" value="terminar">Terminar Prueba</button>
-        </p>
-    </form>
-    
-    </body></html>
+</body></html>
